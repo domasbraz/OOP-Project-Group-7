@@ -121,10 +121,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         EI6 = new javax.swing.JLabel();
         NavBar = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
+        HomeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 102));
-        setPreferredSize(new java.awt.Dimension(850, 600));
         setResizable(false);
 
         SearchField.setBackground(new java.awt.Color(102, 204, 255));
@@ -1047,6 +1047,13 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         Title.setForeground(new java.awt.Color(0, 175, 255));
         Title.setText("Recycling Object List");
 
+        HomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recyclingservice/icons/home.png"))); // NOI18N
+        HomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout NavBarLayout = new javax.swing.GroupLayout(NavBar);
         NavBar.setLayout(NavBarLayout);
         NavBarLayout.setHorizontalGroup(
@@ -1054,14 +1061,18 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(NavBarLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(607, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16))
         );
         NavBarLayout.setVerticalGroup(
             NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NavBarLayout.createSequentialGroup()
+            .addGroup(NavBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Title)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGroup(NavBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(HomeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Title))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1103,6 +1114,12 @@ public class RecyclingListGUI extends javax.swing.JFrame {
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
        JOptionPane.showMessageDialog(null,"The Search function is not implemented yet");
     }//GEN-LAST:event_SearchBtnActionPerformed
+
+    private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
+       dispose();
+       HomePage HPUI = new HomePage();
+       HPUI.setVisible(true);
+    }//GEN-LAST:event_HomeBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1171,6 +1188,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
     private javax.swing.JLabel EILbl4;
     private javax.swing.JLabel EILbl5;
     private javax.swing.JLabel EILbl6;
+    private javax.swing.JButton HomeBtn;
     private javax.swing.JPanel ImgPanel1;
     private javax.swing.JPanel ImgPanel2;
     private javax.swing.JPanel ImgPanel3;
