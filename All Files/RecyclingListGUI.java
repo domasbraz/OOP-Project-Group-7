@@ -36,23 +36,23 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         scrollPane1 = new java.awt.ScrollPane();
         MaterialsPnl = new javax.swing.JPanel();
         Obj1 = new javax.swing.JPanel();
-        Name = new javax.swing.JLabel();
-        Type = new javax.swing.JLabel();
-        ImgPanel = new javax.swing.JPanel();
-        Description = new javax.swing.JLabel();
-        MaterialsLbl = new javax.swing.JLabel();
-        Recyclable = new javax.swing.JLabel();
-        EILbl = new javax.swing.JLabel();
-        MaterialsCB = new javax.swing.JComboBox<>();
-        DTLbl = new javax.swing.JLabel();
-        DT = new javax.swing.JLabel();
-        RTLbl = new javax.swing.JLabel();
-        RT = new javax.swing.JLabel();
-        EI = new javax.swing.JLabel();
+        Name1 = new javax.swing.JLabel();
+        Type1 = new javax.swing.JLabel();
+        ImgPanel1 = new javax.swing.JPanel();
+        Description1 = new javax.swing.JLabel();
+        MaterialsLbl1 = new javax.swing.JLabel();
+        Recyclable1 = new javax.swing.JLabel();
+        EILbl1 = new javax.swing.JLabel();
+        MaterialsCB1 = new javax.swing.JComboBox<>();
+        DTLbl1 = new javax.swing.JLabel();
+        DT1 = new javax.swing.JLabel();
+        RTLbl1 = new javax.swing.JLabel();
+        RT1 = new javax.swing.JLabel();
+        EI1 = new javax.swing.JLabel();
         Obj2 = new javax.swing.JPanel();
-        Name3 = new javax.swing.JLabel();
-        Type3 = new javax.swing.JLabel();
-        ImgPanel3 = new javax.swing.JPanel();
+        Name2 = new javax.swing.JLabel();
+        Type2 = new javax.swing.JLabel();
+        ImgPanel2 = new javax.swing.JPanel();
         Description2 = new javax.swing.JLabel();
         MaterialsLbl2 = new javax.swing.JLabel();
         Recyclable2 = new javax.swing.JLabel();
@@ -64,9 +64,9 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         RT2 = new javax.swing.JLabel();
         EI2 = new javax.swing.JLabel();
         Obj3 = new javax.swing.JPanel();
-        Name4 = new javax.swing.JLabel();
-        Type4 = new javax.swing.JLabel();
-        ImgPanel4 = new javax.swing.JPanel();
+        Name3 = new javax.swing.JLabel();
+        Type3 = new javax.swing.JLabel();
+        ImgPanel3 = new javax.swing.JPanel();
         Description3 = new javax.swing.JLabel();
         MaterialsLbl3 = new javax.swing.JLabel();
         Recyclable3 = new javax.swing.JLabel();
@@ -78,23 +78,9 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         RT3 = new javax.swing.JLabel();
         EI3 = new javax.swing.JLabel();
         Obj4 = new javax.swing.JPanel();
-        Name2 = new javax.swing.JLabel();
-        Type2 = new javax.swing.JLabel();
-        ImgPanel2 = new javax.swing.JPanel();
-        Description1 = new javax.swing.JLabel();
-        MaterialsLbl1 = new javax.swing.JLabel();
-        Recyclable1 = new javax.swing.JLabel();
-        EILbl1 = new javax.swing.JLabel();
-        MaterialsCB1 = new javax.swing.JComboBox<>();
-        DTLbl1 = new javax.swing.JLabel();
-        DT1 = new javax.swing.JLabel();
-        RTLbl1 = new javax.swing.JLabel();
-        RT1 = new javax.swing.JLabel();
-        EI1 = new javax.swing.JLabel();
-        Obj5 = new javax.swing.JPanel();
-        Name5 = new javax.swing.JLabel();
-        Type5 = new javax.swing.JLabel();
-        ImgPanel5 = new javax.swing.JPanel();
+        Name4 = new javax.swing.JLabel();
+        Type4 = new javax.swing.JLabel();
+        ImgPanel4 = new javax.swing.JPanel();
         Description4 = new javax.swing.JLabel();
         MaterialsLbl4 = new javax.swing.JLabel();
         Recyclable4 = new javax.swing.JLabel();
@@ -105,10 +91,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         RTLbl4 = new javax.swing.JLabel();
         RT4 = new javax.swing.JLabel();
         EI4 = new javax.swing.JLabel();
-        Obj6 = new javax.swing.JPanel();
-        Name6 = new javax.swing.JLabel();
-        Type6 = new javax.swing.JLabel();
-        ImgPanel6 = new javax.swing.JPanel();
+        Obj5 = new javax.swing.JPanel();
+        Name5 = new javax.swing.JLabel();
+        Type5 = new javax.swing.JLabel();
+        ImgPanel5 = new javax.swing.JPanel();
         Description5 = new javax.swing.JLabel();
         MaterialsLbl5 = new javax.swing.JLabel();
         Recyclable5 = new javax.swing.JLabel();
@@ -119,12 +105,28 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         RTLbl5 = new javax.swing.JLabel();
         RT5 = new javax.swing.JLabel();
         EI5 = new javax.swing.JLabel();
+        Obj6 = new javax.swing.JPanel();
+        Name6 = new javax.swing.JLabel();
+        Type6 = new javax.swing.JLabel();
+        ImgPanel6 = new javax.swing.JPanel();
+        Description6 = new javax.swing.JLabel();
+        MaterialsLbl6 = new javax.swing.JLabel();
+        Recyclable6 = new javax.swing.JLabel();
+        EILbl6 = new javax.swing.JLabel();
+        MaterialsCB6 = new javax.swing.JComboBox<>();
+        DTLbl6 = new javax.swing.JLabel();
+        DT6 = new javax.swing.JLabel();
+        RTLbl6 = new javax.swing.JLabel();
+        RT6 = new javax.swing.JLabel();
+        EI6 = new javax.swing.JLabel();
         NavBar = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         HomeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 102));
+        setPreferredSize(new java.awt.Dimension(850, 600));
+        setResizable(false);
 
         SearchField.setBackground(new java.awt.Color(102, 204, 255));
         SearchField.setText("Search");
@@ -155,79 +157,79 @@ public class RecyclingListGUI extends javax.swing.JFrame {
 
         Obj1.setBackground(new java.awt.Color(102, 204, 255));
 
-        Name.setBackground(new java.awt.Color(0, 175, 255));
-        Name.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Name.setText("Name");
-        Name.setOpaque(true);
+        Name1.setBackground(new java.awt.Color(0, 175, 255));
+        Name1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name1.setText("Name");
+        Name1.setOpaque(true);
 
-        Type.setBackground(new java.awt.Color(0, 175, 255));
-        Type.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Type.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Type.setText("Type");
-        Type.setOpaque(true);
+        Type1.setBackground(new java.awt.Color(0, 175, 255));
+        Type1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type1.setText("Type");
+        Type1.setOpaque(true);
 
-        ImgPanel.setBackground(new java.awt.Color(0, 175, 255));
+        ImgPanel1.setBackground(new java.awt.Color(0, 175, 255));
 
-        javax.swing.GroupLayout ImgPanelLayout = new javax.swing.GroupLayout(ImgPanel);
-        ImgPanel.setLayout(ImgPanelLayout);
-        ImgPanelLayout.setHorizontalGroup(
-            ImgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ImgPanel1Layout = new javax.swing.GroupLayout(ImgPanel1);
+        ImgPanel1.setLayout(ImgPanel1Layout);
+        ImgPanel1Layout.setHorizontalGroup(
+            ImgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 167, Short.MAX_VALUE)
         );
-        ImgPanelLayout.setVerticalGroup(
-            ImgPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ImgPanel1Layout.setVerticalGroup(
+            ImgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        Description.setBackground(new java.awt.Color(0, 175, 255));
-        Description.setText("Description");
-        Description.setOpaque(true);
+        Description1.setBackground(new java.awt.Color(0, 175, 255));
+        Description1.setText("Description");
+        Description1.setOpaque(true);
 
-        MaterialsLbl.setBackground(new java.awt.Color(0, 175, 255));
-        MaterialsLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        MaterialsLbl.setText("Materials");
-        MaterialsLbl.setOpaque(true);
+        MaterialsLbl1.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl1.setText("Materials");
+        MaterialsLbl1.setOpaque(true);
 
-        Recyclable.setBackground(new java.awt.Color(0, 175, 255));
-        Recyclable.setText("recyclable");
-        Recyclable.setOpaque(true);
+        Recyclable1.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable1.setText("recyclable");
+        Recyclable1.setOpaque(true);
 
-        EILbl.setBackground(new java.awt.Color(0, 175, 255));
-        EILbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EILbl.setText("<html>           <p>Enviromental Impact</p> </html>");
-        EILbl.setOpaque(true);
+        EILbl1.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl1.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl1.setOpaque(true);
 
-        MaterialsCB.setBackground(new java.awt.Color(0, 175, 255));
-        MaterialsCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+        MaterialsCB1.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
 
-        DTLbl.setBackground(new java.awt.Color(0, 175, 255));
-        DTLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        DTLbl.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
-        DTLbl.setOpaque(true);
+        DTLbl1.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl1.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl1.setOpaque(true);
 
-        DT.setBackground(new java.awt.Color(0, 175, 255));
-        DT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        DT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        DT.setText("10 years");
-        DT.setOpaque(true);
+        DT1.setBackground(new java.awt.Color(0, 175, 255));
+        DT1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT1.setText("10 years");
+        DT1.setOpaque(true);
 
-        RTLbl.setBackground(new java.awt.Color(0, 175, 255));
-        RTLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RTLbl.setText("<html>           <p>Recycling Type</p> </html>");
-        RTLbl.setOpaque(true);
+        RTLbl1.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl1.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl1.setOpaque(true);
 
-        RT.setBackground(new java.awt.Color(0, 175, 255));
-        RT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RT.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        RT.setText("Plastic");
-        RT.setOpaque(true);
+        RT1.setBackground(new java.awt.Color(0, 175, 255));
+        RT1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT1.setText("Plastic");
+        RT1.setOpaque(true);
 
-        EI.setBackground(new java.awt.Color(0, 175, 255));
-        EI.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EI.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        EI.setText("9/10");
-        EI.setOpaque(true);
+        EI1.setBackground(new java.awt.Color(0, 175, 255));
+        EI1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI1.setText("9/10");
+        EI1.setOpaque(true);
 
         javax.swing.GroupLayout Obj1Layout = new javax.swing.GroupLayout(Obj1);
         Obj1.setLayout(Obj1Layout);
@@ -237,28 +239,28 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Obj1Layout.createSequentialGroup()
-                        .addComponent(Description, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Description1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj1Layout.createSequentialGroup()
-                        .addComponent(Name, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Type, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Type1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj1Layout.createSequentialGroup()
-                        .addComponent(ImgPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ImgPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(EILbl, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(DTLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(RTLbl, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
-                            .addComponent(MaterialsLbl, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                                .addComponent(EILbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(MaterialsCB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj1Layout.setVerticalGroup(
@@ -266,58 +268,58 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Name)
-                    .addComponent(Type, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Name1)
+                    .addComponent(Type1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Obj1Layout.createSequentialGroup()
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MaterialsLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MaterialsCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(MaterialsLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DT, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DTLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DT1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RTLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RT, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(RTLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(EILbl, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
-                            .addComponent(EI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(ImgPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(EILbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)
+                            .addComponent(EI1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Recyclable, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Description, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Recyclable1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Obj2.setBackground(new java.awt.Color(102, 204, 255));
 
-        Name3.setBackground(new java.awt.Color(0, 175, 255));
-        Name3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Name3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Name3.setText("Name");
-        Name3.setOpaque(true);
+        Name2.setBackground(new java.awt.Color(0, 175, 255));
+        Name2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name2.setText("Name");
+        Name2.setOpaque(true);
 
-        Type3.setBackground(new java.awt.Color(0, 175, 255));
-        Type3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Type3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Type3.setText("Type");
-        Type3.setOpaque(true);
+        Type2.setBackground(new java.awt.Color(0, 175, 255));
+        Type2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type2.setText("Type");
+        Type2.setOpaque(true);
 
-        ImgPanel3.setBackground(new java.awt.Color(0, 175, 255));
+        ImgPanel2.setBackground(new java.awt.Color(0, 175, 255));
 
-        javax.swing.GroupLayout ImgPanel3Layout = new javax.swing.GroupLayout(ImgPanel3);
-        ImgPanel3.setLayout(ImgPanel3Layout);
-        ImgPanel3Layout.setHorizontalGroup(
-            ImgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ImgPanel2Layout = new javax.swing.GroupLayout(ImgPanel2);
+        ImgPanel2.setLayout(ImgPanel2Layout);
+        ImgPanel2Layout.setHorizontalGroup(
+            ImgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 167, Short.MAX_VALUE)
         );
-        ImgPanel3Layout.setVerticalGroup(
-            ImgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ImgPanel2Layout.setVerticalGroup(
+            ImgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
@@ -382,11 +384,11 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Recyclable2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj2Layout.createSequentialGroup()
-                        .addComponent(Name3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Name2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Type3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Type2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj2Layout.createSequentialGroup()
-                        .addComponent(ImgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ImgPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -407,8 +409,8 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Name3)
-                    .addComponent(Type3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Name2)
+                    .addComponent(Type2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Obj2Layout.createSequentialGroup()
@@ -427,7 +429,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                         .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EI2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EILbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
-                    .addComponent(ImgPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ImgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Recyclable2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -437,28 +439,28 @@ public class RecyclingListGUI extends javax.swing.JFrame {
 
         Obj3.setBackground(new java.awt.Color(102, 204, 255));
 
-        Name4.setBackground(new java.awt.Color(0, 175, 255));
-        Name4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Name4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Name4.setText("Name");
-        Name4.setOpaque(true);
+        Name3.setBackground(new java.awt.Color(0, 175, 255));
+        Name3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name3.setText("Name");
+        Name3.setOpaque(true);
 
-        Type4.setBackground(new java.awt.Color(0, 175, 255));
-        Type4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Type4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Type4.setText("Type");
-        Type4.setOpaque(true);
+        Type3.setBackground(new java.awt.Color(0, 175, 255));
+        Type3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type3.setText("Type");
+        Type3.setOpaque(true);
 
-        ImgPanel4.setBackground(new java.awt.Color(0, 175, 255));
+        ImgPanel3.setBackground(new java.awt.Color(0, 175, 255));
 
-        javax.swing.GroupLayout ImgPanel4Layout = new javax.swing.GroupLayout(ImgPanel4);
-        ImgPanel4.setLayout(ImgPanel4Layout);
-        ImgPanel4Layout.setHorizontalGroup(
-            ImgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ImgPanel3Layout = new javax.swing.GroupLayout(ImgPanel3);
+        ImgPanel3.setLayout(ImgPanel3Layout);
+        ImgPanel3Layout.setHorizontalGroup(
+            ImgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 167, Short.MAX_VALUE)
         );
-        ImgPanel4Layout.setVerticalGroup(
-            ImgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ImgPanel3Layout.setVerticalGroup(
+            ImgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 151, Short.MAX_VALUE)
         );
 
@@ -523,11 +525,11 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Recyclable3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj3Layout.createSequentialGroup()
-                        .addComponent(Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Name3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Type4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Type3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj3Layout.createSequentialGroup()
-                        .addComponent(ImgPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ImgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -548,8 +550,8 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Name4)
-                    .addComponent(Type4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Name3)
+                    .addComponent(Type3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Obj3Layout.createSequentialGroup()
@@ -568,7 +570,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                         .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EI3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EILbl3, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
-                    .addComponent(ImgPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ImgPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Recyclable3, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -578,170 +580,29 @@ public class RecyclingListGUI extends javax.swing.JFrame {
 
         Obj4.setBackground(new java.awt.Color(102, 204, 255));
 
-        Name2.setBackground(new java.awt.Color(0, 175, 255));
-        Name2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Name2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Name2.setText("Name");
-        Name2.setOpaque(true);
+        Name4.setBackground(new java.awt.Color(0, 175, 255));
+        Name4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name4.setText("Name");
+        Name4.setOpaque(true);
 
-        Type2.setBackground(new java.awt.Color(0, 175, 255));
-        Type2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Type2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Type2.setText("Type");
-        Type2.setOpaque(true);
+        Type4.setBackground(new java.awt.Color(0, 175, 255));
+        Type4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type4.setText("Type");
+        Type4.setOpaque(true);
 
-        ImgPanel2.setBackground(new java.awt.Color(0, 175, 255));
+        ImgPanel4.setBackground(new java.awt.Color(0, 175, 255));
 
-        javax.swing.GroupLayout ImgPanel2Layout = new javax.swing.GroupLayout(ImgPanel2);
-        ImgPanel2.setLayout(ImgPanel2Layout);
-        ImgPanel2Layout.setHorizontalGroup(
-            ImgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ImgPanel4Layout = new javax.swing.GroupLayout(ImgPanel4);
+        ImgPanel4.setLayout(ImgPanel4Layout);
+        ImgPanel4Layout.setHorizontalGroup(
+            ImgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 167, Short.MAX_VALUE)
         );
-        ImgPanel2Layout.setVerticalGroup(
-            ImgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ImgPanel4Layout.setVerticalGroup(
+            ImgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        Description1.setBackground(new java.awt.Color(0, 175, 255));
-        Description1.setText("Description");
-        Description1.setOpaque(true);
-
-        MaterialsLbl1.setBackground(new java.awt.Color(0, 175, 255));
-        MaterialsLbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        MaterialsLbl1.setText("Materials");
-        MaterialsLbl1.setOpaque(true);
-
-        Recyclable1.setBackground(new java.awt.Color(0, 175, 255));
-        Recyclable1.setText("recyclable");
-        Recyclable1.setOpaque(true);
-
-        EILbl1.setBackground(new java.awt.Color(0, 175, 255));
-        EILbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EILbl1.setText("<html>           <p>Enviromental Impact</p> </html>");
-        EILbl1.setOpaque(true);
-
-        MaterialsCB1.setBackground(new java.awt.Color(0, 175, 255));
-        MaterialsCB1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
-
-        DTLbl1.setBackground(new java.awt.Color(0, 175, 255));
-        DTLbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        DTLbl1.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
-        DTLbl1.setOpaque(true);
-
-        DT1.setBackground(new java.awt.Color(0, 175, 255));
-        DT1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        DT1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        DT1.setText("10 years");
-        DT1.setOpaque(true);
-
-        RTLbl1.setBackground(new java.awt.Color(0, 175, 255));
-        RTLbl1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RTLbl1.setText("<html>           <p>Recycling Type</p> </html>");
-        RTLbl1.setOpaque(true);
-
-        RT1.setBackground(new java.awt.Color(0, 175, 255));
-        RT1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        RT1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        RT1.setText("Plastic");
-        RT1.setOpaque(true);
-
-        EI1.setBackground(new java.awt.Color(0, 175, 255));
-        EI1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        EI1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        EI1.setText("9/10");
-        EI1.setOpaque(true);
-
-        javax.swing.GroupLayout Obj4Layout = new javax.swing.GroupLayout(Obj4);
-        Obj4.setLayout(Obj4Layout);
-        Obj4Layout.setHorizontalGroup(
-            Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Obj4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj4Layout.createSequentialGroup()
-                        .addComponent(Description1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Obj4Layout.createSequentialGroup()
-                        .addComponent(Name2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Type2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Obj4Layout.createSequentialGroup()
-                        .addComponent(ImgPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(EILbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(DTLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(RTLbl1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
-                            .addComponent(MaterialsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        Obj4Layout.setVerticalGroup(
-            Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Obj4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Name2)
-                    .addComponent(Type2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj4Layout.createSequentialGroup()
-                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MaterialsLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MaterialsCB1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DT1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DTLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RTLbl1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RT1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(EI1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EILbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
-                    .addComponent(ImgPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Recyclable1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Description1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        Obj5.setBackground(new java.awt.Color(102, 204, 255));
-
-        Name5.setBackground(new java.awt.Color(0, 175, 255));
-        Name5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Name5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Name5.setText("Name");
-        Name5.setOpaque(true);
-
-        Type5.setBackground(new java.awt.Color(0, 175, 255));
-        Type5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Type5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Type5.setText("Type");
-        Type5.setOpaque(true);
-
-        ImgPanel5.setBackground(new java.awt.Color(0, 175, 255));
-
-        javax.swing.GroupLayout ImgPanel5Layout = new javax.swing.GroupLayout(ImgPanel5);
-        ImgPanel5.setLayout(ImgPanel5Layout);
-        ImgPanel5Layout.setHorizontalGroup(
-            ImgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
-        );
-        ImgPanel5Layout.setVerticalGroup(
-            ImgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 151, Short.MAX_VALUE)
         );
 
         Description4.setBackground(new java.awt.Color(0, 175, 255));
@@ -793,95 +654,95 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         EI4.setText("9/10");
         EI4.setOpaque(true);
 
-        javax.swing.GroupLayout Obj5Layout = new javax.swing.GroupLayout(Obj5);
-        Obj5.setLayout(Obj5Layout);
-        Obj5Layout.setHorizontalGroup(
-            Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Obj5Layout.createSequentialGroup()
+        javax.swing.GroupLayout Obj4Layout = new javax.swing.GroupLayout(Obj4);
+        Obj4.setLayout(Obj4Layout);
+        Obj4Layout.setHorizontalGroup(
+            Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj5Layout.createSequentialGroup()
+                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj4Layout.createSequentialGroup()
                         .addComponent(Description4, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Recyclable4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Obj5Layout.createSequentialGroup()
-                        .addComponent(Name5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(Obj4Layout.createSequentialGroup()
+                        .addComponent(Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Type5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(Obj5Layout.createSequentialGroup()
-                        .addComponent(ImgPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Type4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj4Layout.createSequentialGroup()
+                        .addComponent(ImgPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(EILbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addComponent(DTLbl4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                                 .addComponent(RTLbl4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                             .addComponent(MaterialsLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(MaterialsCB4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EI4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        Obj5Layout.setVerticalGroup(
-            Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(Obj5Layout.createSequentialGroup()
+        Obj4Layout.setVerticalGroup(
+            Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Name5)
-                    .addComponent(Type5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name4)
+                    .addComponent(Type4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(Obj5Layout.createSequentialGroup()
-                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj4Layout.createSequentialGroup()
+                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(MaterialsLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(MaterialsCB4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(DT4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DTLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(RTLbl4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(RT4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(EI4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(EILbl4, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
-                    .addComponent(ImgPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ImgPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Recyclable4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Description4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        Obj6.setBackground(new java.awt.Color(102, 204, 255));
+        Obj5.setBackground(new java.awt.Color(102, 204, 255));
 
-        Name6.setBackground(new java.awt.Color(0, 175, 255));
-        Name6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Name6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Name6.setText("Name");
-        Name6.setOpaque(true);
+        Name5.setBackground(new java.awt.Color(0, 175, 255));
+        Name5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name5.setText("Name");
+        Name5.setOpaque(true);
 
-        Type6.setBackground(new java.awt.Color(0, 175, 255));
-        Type6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Type6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Type6.setText("Type");
-        Type6.setOpaque(true);
+        Type5.setBackground(new java.awt.Color(0, 175, 255));
+        Type5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type5.setText("Type");
+        Type5.setOpaque(true);
 
-        ImgPanel6.setBackground(new java.awt.Color(0, 175, 255));
+        ImgPanel5.setBackground(new java.awt.Color(0, 175, 255));
 
-        javax.swing.GroupLayout ImgPanel6Layout = new javax.swing.GroupLayout(ImgPanel6);
-        ImgPanel6.setLayout(ImgPanel6Layout);
-        ImgPanel6Layout.setHorizontalGroup(
-            ImgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ImgPanel5Layout = new javax.swing.GroupLayout(ImgPanel5);
+        ImgPanel5.setLayout(ImgPanel5Layout);
+        ImgPanel5Layout.setHorizontalGroup(
+            ImgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 167, Short.MAX_VALUE)
         );
-        ImgPanel6Layout.setVerticalGroup(
-            ImgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        ImgPanel5Layout.setVerticalGroup(
+            ImgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 151, Short.MAX_VALUE)
         );
 
@@ -934,6 +795,147 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         EI5.setText("9/10");
         EI5.setOpaque(true);
 
+        javax.swing.GroupLayout Obj5Layout = new javax.swing.GroupLayout(Obj5);
+        Obj5.setLayout(Obj5Layout);
+        Obj5Layout.setHorizontalGroup(
+            Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj5Layout.createSequentialGroup()
+                        .addComponent(Description5, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj5Layout.createSequentialGroup()
+                        .addComponent(Name5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj5Layout.createSequentialGroup()
+                        .addComponent(ImgPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(MaterialsCB5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DT5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj5Layout.setVerticalGroup(
+            Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name5)
+                    .addComponent(Type5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj5Layout.createSequentialGroup()
+                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj6.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name6.setBackground(new java.awt.Color(0, 175, 255));
+        Name6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name6.setText("Name");
+        Name6.setOpaque(true);
+
+        Type6.setBackground(new java.awt.Color(0, 175, 255));
+        Type6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type6.setText("Type");
+        Type6.setOpaque(true);
+
+        ImgPanel6.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel6Layout = new javax.swing.GroupLayout(ImgPanel6);
+        ImgPanel6.setLayout(ImgPanel6Layout);
+        ImgPanel6Layout.setHorizontalGroup(
+            ImgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 167, Short.MAX_VALUE)
+        );
+        ImgPanel6Layout.setVerticalGroup(
+            ImgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 151, Short.MAX_VALUE)
+        );
+
+        Description6.setBackground(new java.awt.Color(0, 175, 255));
+        Description6.setText("Description");
+        Description6.setOpaque(true);
+
+        MaterialsLbl6.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl6.setText("Materials");
+        MaterialsLbl6.setOpaque(true);
+
+        Recyclable6.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable6.setText("recyclable");
+        Recyclable6.setOpaque(true);
+
+        EILbl6.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl6.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl6.setOpaque(true);
+
+        MaterialsCB6.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB6.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl6.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl6.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl6.setOpaque(true);
+
+        DT6.setBackground(new java.awt.Color(0, 175, 255));
+        DT6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT6.setText("10 years");
+        DT6.setOpaque(true);
+
+        RTLbl6.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl6.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl6.setOpaque(true);
+
+        RT6.setBackground(new java.awt.Color(0, 175, 255));
+        RT6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT6.setText("Plastic");
+        RT6.setOpaque(true);
+
+        EI6.setBackground(new java.awt.Color(0, 175, 255));
+        EI6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI6.setText("9/10");
+        EI6.setOpaque(true);
+
         javax.swing.GroupLayout Obj6Layout = new javax.swing.GroupLayout(Obj6);
         Obj6.setLayout(Obj6Layout);
         Obj6Layout.setHorizontalGroup(
@@ -942,9 +944,9 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(Obj6Layout.createSequentialGroup()
-                        .addComponent(Description5, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Description6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(Obj6Layout.createSequentialGroup()
                         .addComponent(Name6, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -954,16 +956,16 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(EILbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(DTLbl5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(RTLbl5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
-                            .addComponent(MaterialsLbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                                .addComponent(EILbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(DT5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RT5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(MaterialsCB6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DT6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj6Layout.setVerticalGroup(
@@ -977,25 +979,25 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                 .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Obj6Layout.createSequentialGroup()
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(MaterialsLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MaterialsCB5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(MaterialsLbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DT5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DTLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(DT6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(RTLbl5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(RT5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(RTLbl6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(EI5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EILbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                            .addComponent(EI6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl6, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
                     .addComponent(ImgPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Recyclable5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Description5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Recyclable6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description6, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1155,57 +1157,57 @@ public class RecyclingListGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
-    private javax.swing.JLabel DT;
     private javax.swing.JLabel DT1;
     private javax.swing.JLabel DT2;
     private javax.swing.JLabel DT3;
     private javax.swing.JLabel DT4;
     private javax.swing.JLabel DT5;
-    private javax.swing.JLabel DTLbl;
+    private javax.swing.JLabel DT6;
     private javax.swing.JLabel DTLbl1;
     private javax.swing.JLabel DTLbl2;
     private javax.swing.JLabel DTLbl3;
     private javax.swing.JLabel DTLbl4;
     private javax.swing.JLabel DTLbl5;
-    private javax.swing.JLabel Description;
+    private javax.swing.JLabel DTLbl6;
     private javax.swing.JLabel Description1;
     private javax.swing.JLabel Description2;
     private javax.swing.JLabel Description3;
     private javax.swing.JLabel Description4;
     private javax.swing.JLabel Description5;
-    private javax.swing.JLabel EI;
+    private javax.swing.JLabel Description6;
     private javax.swing.JLabel EI1;
     private javax.swing.JLabel EI2;
     private javax.swing.JLabel EI3;
     private javax.swing.JLabel EI4;
     private javax.swing.JLabel EI5;
-    private javax.swing.JLabel EILbl;
+    private javax.swing.JLabel EI6;
     private javax.swing.JLabel EILbl1;
     private javax.swing.JLabel EILbl2;
     private javax.swing.JLabel EILbl3;
     private javax.swing.JLabel EILbl4;
     private javax.swing.JLabel EILbl5;
+    private javax.swing.JLabel EILbl6;
     private javax.swing.JButton HomeBtn;
-    private javax.swing.JPanel ImgPanel;
+    private javax.swing.JPanel ImgPanel1;
     private javax.swing.JPanel ImgPanel2;
     private javax.swing.JPanel ImgPanel3;
     private javax.swing.JPanel ImgPanel4;
     private javax.swing.JPanel ImgPanel5;
     private javax.swing.JPanel ImgPanel6;
-    private javax.swing.JComboBox<String> MaterialsCB;
     private javax.swing.JComboBox<String> MaterialsCB1;
     private javax.swing.JComboBox<String> MaterialsCB2;
     private javax.swing.JComboBox<String> MaterialsCB3;
     private javax.swing.JComboBox<String> MaterialsCB4;
     private javax.swing.JComboBox<String> MaterialsCB5;
-    private javax.swing.JLabel MaterialsLbl;
+    private javax.swing.JComboBox<String> MaterialsCB6;
     private javax.swing.JLabel MaterialsLbl1;
     private javax.swing.JLabel MaterialsLbl2;
     private javax.swing.JLabel MaterialsLbl3;
     private javax.swing.JLabel MaterialsLbl4;
     private javax.swing.JLabel MaterialsLbl5;
+    private javax.swing.JLabel MaterialsLbl6;
     private javax.swing.JPanel MaterialsPnl;
-    private javax.swing.JLabel Name;
+    private javax.swing.JLabel Name1;
     private javax.swing.JLabel Name2;
     private javax.swing.JLabel Name3;
     private javax.swing.JLabel Name4;
@@ -1218,28 +1220,28 @@ public class RecyclingListGUI extends javax.swing.JFrame {
     private javax.swing.JPanel Obj4;
     private javax.swing.JPanel Obj5;
     private javax.swing.JPanel Obj6;
-    private javax.swing.JLabel RT;
     private javax.swing.JLabel RT1;
     private javax.swing.JLabel RT2;
     private javax.swing.JLabel RT3;
     private javax.swing.JLabel RT4;
     private javax.swing.JLabel RT5;
-    private javax.swing.JLabel RTLbl;
+    private javax.swing.JLabel RT6;
     private javax.swing.JLabel RTLbl1;
     private javax.swing.JLabel RTLbl2;
     private javax.swing.JLabel RTLbl3;
     private javax.swing.JLabel RTLbl4;
     private javax.swing.JLabel RTLbl5;
-    private javax.swing.JLabel Recyclable;
+    private javax.swing.JLabel RTLbl6;
     private javax.swing.JLabel Recyclable1;
     private javax.swing.JLabel Recyclable2;
     private javax.swing.JLabel Recyclable3;
     private javax.swing.JLabel Recyclable4;
     private javax.swing.JLabel Recyclable5;
+    private javax.swing.JLabel Recyclable6;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JTextField SearchField;
     private javax.swing.JLabel Title;
-    private javax.swing.JLabel Type;
+    private javax.swing.JLabel Type1;
     private javax.swing.JLabel Type2;
     private javax.swing.JLabel Type3;
     private javax.swing.JLabel Type4;
