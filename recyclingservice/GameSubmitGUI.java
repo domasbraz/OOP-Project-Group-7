@@ -5,7 +5,10 @@
 package recyclingservice;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
+import java.io.*;
+import recyclingservice.data.player.PlayerHighScore;
 
 
 /**
@@ -15,6 +18,7 @@ import javax.swing.JScrollPane;
 public class GameSubmitGUI extends javax.swing.JFrame
 {
 
+    private String errorMsg;
     /**
      * Creates new form GameSubmitGUI
      */
@@ -29,6 +33,110 @@ public class GameSubmitGUI extends javax.swing.JFrame
 
     }
     
+    public boolean submitScore()
+    {
+        errorMsg = "";
+        String playerUsername = tfUsername.getText();
+        String playerFirstName = tfFName.getText();
+        String playerLastName = tfLName.getText();
+        
+        if (cbHideName.isSelected())
+        {
+            playerFirstName = playerLastName = "Anonymous";
+            
+            if (checkValidInput(playerUsername, "Username"))
+            {
+                return true;
+            }
+            else
+            {
+                printError();
+                return false;
+            }
+        }
+        else
+        {
+            boolean check1 = checkValidInput(playerFirstName, "First Name");
+            boolean check2 = checkValidInput(playerLastName, "Last Name"); 
+            boolean check3 = checkValidInput(playerUsername, "Username");       
+            if (check1 && check2 && check3)
+            {
+                return true;
+            }
+            else
+            {
+                printError();
+                return false;
+            }
+        }
+    }
+    
+    public boolean checkValidInput(String input, String type)
+    {
+        if (type.equals("First Name") || type.equals("Last Name"))
+        {
+            if (input.length() > 0 && input.length() < 21)
+            {
+                if (input.replaceAll("[A-Za-z]", "").length() < 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    errorMsg += type + " must only contain Alphabetical characters!\r\n";
+                    return false;
+                }
+            }
+            else
+            {
+                errorMsg += type + " must be between 1 and 20 characters long!\r\n";
+                return false;
+            }
+        }
+        else
+        {
+            if (input.length() > 2 && input.length() < 17)
+            {
+                return true;
+            }
+            else
+            {
+                errorMsg += type +" must be between 3 and 16 characters long!";
+                return false;
+            }
+        }
+    }
+    
+    public void printError()
+    {
+        new JOptionPane().showMessageDialog(null,errorMsg);
+    }
+    
+    public void saveScore()
+    {
+        File outFile;
+        FileOutputStream fStream;
+        ObjectOutputStream oStream;
+        PlayerHighScore pi = new PlayerHighScore();
+        
+        try
+        {
+            outFile = new File("src/recyclingservice/data/player/playerHighScore.dat");
+            fStream = new FileOutputStream(outFile);
+            oStream = new ObjectOutputStream(fStream);
+            
+            String[] Score = {lblScoreVal.getText(), tfUsername.getText(), tfLName.getText(), tfFName.getText()};
+            pi.setPlayerValues(Score);
+            
+            oStream.writeObject(pi);
+            
+            oStream.close();
+        } 
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }
+    }
     
 
     /**
@@ -47,9 +155,9 @@ public class GameSubmitGUI extends javax.swing.JFrame
         lblFinalScore = new javax.swing.JLabel();
         lblScoreVal = new javax.swing.JLabel();
         lblLName = new javax.swing.JLabel();
-        tfLName = new javax.swing.JTextField();
-        lblFName = new javax.swing.JLabel();
         tfFName = new javax.swing.JTextField();
+        lblFName = new javax.swing.JLabel();
+        tfLName = new javax.swing.JTextField();
         tfUsername = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
         cbHideName = new javax.swing.JCheckBox();
@@ -66,7 +174,6 @@ public class GameSubmitGUI extends javax.swing.JFrame
         setBackground(new java.awt.Color(153, 153, 255));
         setForeground(new java.awt.Color(0, 0, 0));
         setMinimumSize(new java.awt.Dimension(850, 600));
-        setPreferredSize(new java.awt.Dimension(850, 600));
         setResizable(false);
 
         jScrollPane1.setBorder(null);
@@ -98,24 +205,24 @@ public class GameSubmitGUI extends javax.swing.JFrame
         lblLName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblLName.setText("Last Name:");
 
-        tfLName.setBackground(new java.awt.Color(51, 51, 51));
-        tfLName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        tfLName.setForeground(new Color(111, 162, 202));
-        tfLName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tfLName.setCaretColor(new java.awt.Color(204, 204, 204));
-        tfLName.setSelectedTextColor(new java.awt.Color(204, 204, 204));
-
-        lblFName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblFName.setForeground(new Color(111, 162, 202));
-        lblFName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblFName.setText("First Name:");
-
         tfFName.setBackground(new java.awt.Color(51, 51, 51));
         tfFName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         tfFName.setForeground(new Color(111, 162, 202));
         tfFName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         tfFName.setCaretColor(new java.awt.Color(204, 204, 204));
         tfFName.setSelectedTextColor(new java.awt.Color(204, 204, 204));
+
+        lblFName.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblFName.setForeground(new Color(111, 162, 202));
+        lblFName.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblFName.setText("First Name:");
+
+        tfLName.setBackground(new java.awt.Color(51, 51, 51));
+        tfLName.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        tfLName.setForeground(new Color(111, 162, 202));
+        tfLName.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tfLName.setCaretColor(new java.awt.Color(204, 204, 204));
+        tfLName.setSelectedTextColor(new java.awt.Color(204, 204, 204));
 
         tfUsername.setBackground(new java.awt.Color(51, 51, 51));
         tfUsername.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -229,10 +336,10 @@ public class GameSubmitGUI extends javax.swing.JFrame
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblScoreVal, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbHideName, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -278,11 +385,11 @@ public class GameSubmitGUI extends javax.swing.JFrame
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbHideName)
                             .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblLName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -350,9 +457,12 @@ public class GameSubmitGUI extends javax.swing.JFrame
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSubmitActionPerformed
     {//GEN-HEADEREND:event_btnSubmitActionPerformed
-        // TODO add your handling code here:
-        new GameLeaderboardGUI().main(null);
-        dispose();
+        if (submitScore())
+        {
+            saveScore();
+            new GameLeaderboardGUI().main(null);
+            dispose();
+        }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     /**

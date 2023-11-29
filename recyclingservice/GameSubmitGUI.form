@@ -79,11 +79,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblScoreVal" alignment="0" min="-2" pref="239" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="tfLName" min="-2" pref="224" max="-2" attributes="0"/>
+                              <Component id="tfFName" min="-2" pref="224" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cbHideName" min="-2" pref="145" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="tfFName" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
+                          <Component id="tfLName" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
                           <Component id="tfUsername" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="tfEmail" min="-2" pref="224" max="-2" attributes="0"/>
@@ -141,12 +141,12 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="cbHideName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblFName" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="tfLName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfFName" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblLName" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Component id="tfFName" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="tfLName" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -229,7 +229,7 @@
                 <Property name="text" type="java.lang.String" value="Last Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfLName">
+            <Component class="javax.swing.JTextField" name="tfFName">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>
@@ -265,7 +265,7 @@
                 <Property name="text" type="java.lang.String" value="First Name:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfFName">
+            <Component class="javax.swing.JTextField" name="tfLName">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="33" green="33" red="33" type="rgb"/>

@@ -64,6 +64,8 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
             
             leaderboardValues[10] = pi.getPlayerValues();
             
+            oStreamPlayer.close();
+            
             leaderboardValues = sortTable(leaderboardValues);
             
             
@@ -75,6 +77,8 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
                     tblLeaderboard.setValueAt(leaderboardValues[row][col-1], row, col);
                 }
             }
+            
+            saveLeaderboard(leaderboardValues);
         
         } 
         catch (IOException e1) 
@@ -112,6 +116,36 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         while (failState);
         
         return table;
+    }
+    
+    private void saveLeaderboard(String[][] leaderboard)
+    {
+        File outFile;
+        FileOutputStream fStream;
+        ObjectOutputStream oStream;
+        
+        try
+        {
+            LeaderBoardData lbd = new LeaderBoardData();
+            
+            outFile = new File("src/recyclingservice/data/leaderboard/leaderboard.dat");
+            fStream= new FileOutputStream(outFile);
+            oStream = new ObjectOutputStream(fStream);
+            
+            lbd.setLeaderboadValues(leaderboard);
+            
+            oStream.writeObject(lbd);
+            
+            oStream.close();
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }
+        /*catch (ClassNotFoundException e2)
+        {
+            
+        }*/
     }
     
     //sets extra styling for tables
@@ -359,6 +393,7 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
+            @Override
             public void run()
             {
                 new GameLeaderboardGUI().setVisible(true);
