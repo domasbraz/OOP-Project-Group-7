@@ -6,6 +6,9 @@ package recyclingservice;
 
 import java.awt.Color;
 import javax.swing.table.DefaultTableCellRenderer;
+import java.io.*;
+import recyclingservice.data.player.PlayerHighScore;
+import recyclingservice.data.leaderboard.LeaderBoardData;
 
 
 /**
@@ -26,6 +29,94 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
     public GameLeaderboardGUI()
     {
         initComponents();
+        setExtraStyling();
+        setLeaderBoardValues();
+        
+        
+        //tblLeaderboard.setValueAt("balls", 0, 0);
+    }
+    
+    private void setLeaderBoardValues()
+    {
+        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        File inFilePlayer, inFileLeaderboard;
+        FileInputStream fStreamPlayer, fStreamLeaderboard;
+        ObjectInputStream oStreamPlayer, oStreamLeaderboard;  
+        
+
+        try 
+        {
+            inFileLeaderboard = new File("src/recyclingservice/data/leaderboard/leaderboard.dat");
+            fStreamLeaderboard = new FileInputStream(inFileLeaderboard);
+            oStreamLeaderboard = new ObjectInputStream(fStreamLeaderboard);
+
+            LeaderBoardData lbi = (LeaderBoardData) oStreamLeaderboard.readObject();
+            
+            String[][] leaderboardValues = lbi.getLeaderboadValues();
+            
+            oStreamLeaderboard.close();
+            
+            inFilePlayer = new File("src/recyclingservice/data/player/playerHighScore.dat");
+            fStreamPlayer = new FileInputStream(inFilePlayer);
+            oStreamPlayer = new ObjectInputStream(fStreamPlayer);
+            
+            PlayerHighScore pi = (PlayerHighScore) oStreamPlayer.readObject();
+            
+            leaderboardValues[10] = pi.getPlayerValues();
+            
+            leaderboardValues = sortTable(leaderboardValues);
+            
+            
+            
+            for (int row = 0; row < 10; row++)
+            {
+                for (int col = 1; col < 5; col++)
+                {
+                    tblLeaderboard.setValueAt(leaderboardValues[row][col-1], row, col);
+                }
+            }
+        
+        } 
+        catch (IOException e1) 
+        {
+            System.out.println(e1);
+        }
+        catch (ClassNotFoundException e2)
+        {
+            System.out.println(e2); 
+        }
+
+        
+    }
+    
+    private String[][] sortTable(String[][] table)
+    {
+        boolean failState;
+        do{
+            failState = false;
+            
+            for (int x = 0; x < table.length - 1 ; x++)
+            {
+                if (Integer.parseInt(table[x][0]) < Integer.parseInt(table[x + 1][0]))
+                {
+                    String[] tempval = table[x];
+
+                    table[x] = table[x + 1];
+
+                    table[x + 1] = tempval;
+
+                    failState = true;
+                }
+            }
+        }
+        while (failState);
+        
+        return table;
+    }
+    
+    //sets extra styling for tables
+    private void setExtraStyling()
+    {
         //https://stackoverflow.com/questions/4408644/how-can-i-change-the-font-of-a-jtables-header
         tblLeaderboard.getTableHeader().setFont(new java.awt.Font("Segoe UI", 1, 36));
         tblLeaderboard.getTableHeader().setForeground(fgColor);
