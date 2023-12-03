@@ -19,43 +19,68 @@ public class GameSubmitGUI extends javax.swing.JFrame
 {
 
     private String errorMsg;
+    private int score = 0;
+    private String playerUsername, playerFirstName, playerLastName;
     /**
      * Creates new form GameSubmitGUI
      */
+    
     public GameSubmitGUI()
     {
-        
-        initComponents();
-        getContentPane().setBackground( new Color(30,30,30) );
-        //https://stackoverflow.com/questions/5583495/how-do-i-speed-up-the-scroll-speed-in-a-jscrollpane-when-using-the-mouse-wheel
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
-        
-
+        defaultMethod();
     }
     
+    //passes on player's score value when constructer is called
+    public GameSubmitGUI(int score)
+    {
+        defaultMethod();
+        this.score = score;
+        lblScoreVal.setText(Integer.toString(this.score));
+    }
+    
+    //method called by all constructers
+    public void defaultMethod()
+    {
+        initComponents();
+        getContentPane().setBackground( new Color(30,30,30) );
+        
+        //adjust scroll sensetivity of the scrollPane
+        //https://stackoverflow.com/questions/5583495/how-do-i-speed-up-the-scroll-speed-in-a-jscrollpane-when-using-the-mouse-wheel
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
+    }
+    
+    //sets variables and makes sure all fields are valid before submitting
     public boolean submitScore()
     {
+        //resets error message to prevent same messages from appearing each time the error message is called
         errorMsg = "";
-        String playerUsername = tfUsername.getText();
-        String playerFirstName = tfFName.getText();
-        String playerLastName = tfLName.getText();
+        playerUsername = tfUsername.getText();
+        playerFirstName = tfFName.getText();
+        playerLastName = tfLName.getText();
         
+        //checks if checkbox is checked
         if (cbHideName.isSelected())
         {
+            
+            //sets names as anonymous
             playerFirstName = playerLastName = "Anonymous";
             
+            //only need to check if username is valid
+            //Note: the "else" statement is not required as the names would count as valid either way if tested
             if (checkValidInput(playerUsername, "Username"))
             {
                 return true;
             }
             else
             {
+                //Note: error message is set in "checkValidInput" method
                 printError();
                 return false;
             }
         }
         else
         {
+            //checks if fields are valid
             boolean check1 = checkValidInput(playerFirstName, "First Name");
             boolean check2 = checkValidInput(playerLastName, "Last Name"); 
             boolean check3 = checkValidInput(playerUsername, "Username");       
@@ -71,30 +96,38 @@ public class GameSubmitGUI extends javax.swing.JFrame
         }
     }
     
+    //takes the field value as "input" and field as "type", checks if the values are valid
     public boolean checkValidInput(String input, String type)
     {
         if (type.equals("First Name") || type.equals("Last Name"))
         {
+            //ensure name length can be between 0 and 20 characters
             if (input.length() > 0 && input.length() < 21)
             {
+                //ensures only alphabetic characters are present in the field
+                //removes all alphabetical characters from the input, if the input is empty, then it is valid
                 if (input.replaceAll("[A-Za-z]", "").length() < 1)
                 {
                     return true;
                 }
                 else
                 {
+                    //sets error message
                     errorMsg += type + " must only contain Alphabetical characters!\r\n";
                     return false;
                 }
             }
             else
             {
+                //sets error message
                 errorMsg += type + " must be between 1 and 20 characters long!\r\n";
                 return false;
             }
         }
         else
         {
+            //if the field is not a name, in this case, username
+            //length set as 3-16 characters
             if (input.length() > 2 && input.length() < 17)
             {
                 return true;
@@ -107,11 +140,13 @@ public class GameSubmitGUI extends javax.swing.JFrame
         }
     }
     
+    //print error message via JOptionPane
     public void printError()
     {
         new JOptionPane().showMessageDialog(null,errorMsg);
     }
     
+    //save the information provided to the player data file
     public void saveScore()
     {
         File outFile;
@@ -125,7 +160,7 @@ public class GameSubmitGUI extends javax.swing.JFrame
             fStream = new FileOutputStream(outFile);
             oStream = new ObjectOutputStream(fStream);
             
-            String[] Score = {lblScoreVal.getText(), tfUsername.getText(), tfLName.getText(), tfFName.getText()};
+            String[] Score = {Integer.toString(score), playerUsername, playerFirstName, playerLastName};
             pi.setPlayerValues(Score);
             
             oStream.writeObject(pi);
@@ -161,11 +196,6 @@ public class GameSubmitGUI extends javax.swing.JFrame
         tfUsername = new javax.swing.JTextField();
         lblUsername = new javax.swing.JLabel();
         cbHideName = new javax.swing.JCheckBox();
-        lblEmail = new javax.swing.JLabel();
-        tfEmail = new javax.swing.JTextField();
-        cbHideEmail = new javax.swing.JCheckBox();
-        lblGender = new javax.swing.JLabel();
-        cbbGender = new javax.swing.JComboBox<>();
         btnSubmit = new javax.swing.JButton();
         btnRetry = new javax.swing.JButton();
         btnLeaderboard = new javax.swing.JButton();
@@ -250,42 +280,6 @@ public class GameSubmitGUI extends javax.swing.JFrame
             }
         });
 
-        lblEmail.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblEmail.setForeground(new Color(111, 162, 202));
-        lblEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblEmail.setText("E-Mail:");
-
-        tfEmail.setBackground(new java.awt.Color(51, 51, 51));
-        tfEmail.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        tfEmail.setForeground(new Color(111, 162, 202));
-        tfEmail.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        tfEmail.setCaretColor(new java.awt.Color(204, 204, 204));
-        tfEmail.setSelectedTextColor(new java.awt.Color(204, 204, 204));
-
-        cbHideEmail.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cbHideEmail.setForeground(new Color(111,162,202));
-        cbHideEmail.setText("Hide E-Mail");
-        cbHideEmail.setToolTipText("Hides your e-mail in the scoreboard");
-        cbHideEmail.setContentAreaFilled(false);
-        cbHideEmail.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cbHideEmailActionPerformed(evt);
-            }
-        });
-
-        lblGender.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        lblGender.setForeground(new Color(111, 162, 202));
-        lblGender.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblGender.setText("Gender:");
-
-        cbbGender.setBackground(new Color(30,30,30));
-        cbbGender.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        cbbGender.setForeground(new java.awt.Color(102, 102, 255));
-        cbbGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female", "Other", "Prefer not to say" }));
-        cbbGender.setSelectedIndex(3);
-
         btnSubmit.setBackground(new Color(30,30,30));
         btnSubmit.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         btnSubmit.setForeground(new Color(111,162,202)
@@ -340,78 +334,55 @@ public class GameSubmitGUI extends javax.swing.JFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cbHideName, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cbHideEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(cbbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(109, 109, 109))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblLName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(517, 517, 517))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(351, 351, 351)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnRetry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 850, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 34, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(267, 267, 267)
-                .addComponent(btnLeaderboard)
+                .addGap(265, 265, 265)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRetry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLeaderboard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSubmit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFinalScore, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblScoreVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(5, 5, 5)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbHideName)
-                            .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cbHideEmail))))
+                .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFinalScore, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblScoreVal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbHideName)
+                    .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfFName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLName, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfLName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGender)
-                    .addComponent(cbbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSubmit)
                 .addGap(18, 18, 18)
                 .addComponent(btnRetry)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btnLeaderboard)
-                .addGap(53, 53, 53))
+                .addGap(147, 147, 147))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -431,36 +402,30 @@ public class GameSubmitGUI extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void cbHideEmailActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbHideEmailActionPerformed
-    {//GEN-HEADEREND:event_cbHideEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbHideEmailActionPerformed
-
     private void btnRetryActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnRetryActionPerformed
     {//GEN-HEADEREND:event_btnRetryActionPerformed
-        // TODO add your handling code here:
-        new GamePlayGUI().main(null);
+        new GameRulesGUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnRetryActionPerformed
 
     private void btnLeaderboardActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnLeaderboardActionPerformed
     {//GEN-HEADEREND:event_btnLeaderboardActionPerformed
-        // TODO add your handling code here:
-        new GameLeaderboardGUI().main(null);
+        new GameLeaderboardGUI(score).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnLeaderboardActionPerformed
 
     private void cbHideNameActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cbHideNameActionPerformed
     {//GEN-HEADEREND:event_cbHideNameActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_cbHideNameActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSubmitActionPerformed
     {//GEN-HEADEREND:event_btnSubmitActionPerformed
+        //checks if values are valid before submitting
         if (submitScore())
         {
             saveScore();
-            new GameLeaderboardGUI().main(null);
+            new GameLeaderboardGUI(true).setVisible(true);
             dispose();
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
@@ -526,20 +491,15 @@ public class GameSubmitGUI extends javax.swing.JFrame
     private javax.swing.JButton btnLeaderboard;
     private javax.swing.JButton btnRetry;
     private javax.swing.JButton btnSubmit;
-    private javax.swing.JCheckBox cbHideEmail;
     private javax.swing.JCheckBox cbHideName;
-    private javax.swing.JComboBox<String> cbbGender;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblFName;
     private javax.swing.JLabel lblFinalScore;
-    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblLName;
     private javax.swing.JLabel lblScoreVal;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUsername;
-    private javax.swing.JTextField tfEmail;
     private javax.swing.JTextField tfFName;
     private javax.swing.JTextField tfLName;
     private javax.swing.JTextField tfUsername;

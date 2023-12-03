@@ -19,6 +19,11 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
 {
     private Color bgColor = new Color(30,30,30);
     private Color fgColor = new Color(111,162,202);
+    private int playerScore = 0;
+    private String percentageScore; 
+    private String username = "n/a";
+    private String fName = "n/a";
+    private String lName = "n/a";
     
     
 
@@ -28,17 +33,84 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
      */
     public GameLeaderboardGUI()
     {
+        defaultMethod();
+    }
+    
+    //constructor for passing over the score
+    public GameLeaderboardGUI(int score)
+    {
+        playerScore = score;
+        defaultMethod();
+    }
+    
+    //constructor use for when a submission is made
+    public GameLeaderboardGUI(boolean submit)
+    {
+        //this constructor should never have "false" as the parameter
+        //decided to include anyways in case I want to do any testing
+        if (submit)
+        {
+            retrieveDataFile();
+            defaultMethod();
+        }
+        else
+        {
+            new GameLeaderboardGUI(playerScore).setVisible(true);
+            dispose();
+        }
+    }
+    
+    //this method is called by all the constructors
+    private void defaultMethod()
+    {
         initComponents();
         setExtraStyling();
         setLeaderBoardValues();
-        
-        
-        //tblLeaderboard.setValueAt("balls", 0, 0);
+        setDetailTableValues();
     }
     
+    //retrieves the users data file and uses it to set the variables
+    public void retrieveDataFile()
+    {
+        File inFilePlayer;
+        FileInputStream fStreamPlayer;
+        ObjectInputStream oStreamPlayer;
+        
+        try
+        {
+            inFilePlayer = new File("src/recyclingservice/data/player/playerHighScore.dat");
+            fStreamPlayer = new FileInputStream(inFilePlayer);
+            oStreamPlayer = new ObjectInputStream(fStreamPlayer);
+            
+            PlayerHighScore pi = (PlayerHighScore) oStreamPlayer.readObject();
+            
+            String[] dataInfo = pi.getPlayerValues();
+            
+            oStreamPlayer.close();
+            
+            playerScore = Integer.parseInt(dataInfo[0]);
+            
+            username = dataInfo[1];
+            
+            fName = dataInfo[2];
+            
+            lName = dataInfo[3];
+
+        } 
+        catch (IOException e )
+        {
+            System.out.println(e);
+        }
+        catch (ClassNotFoundException e)
+        {
+            System.out.println(e);
+        }
+    }
+    
+    //sets the cell values of the leaderboard table
     private void setLeaderBoardValues()
     {
-        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
+        
         File inFilePlayer, inFileLeaderboard;
         FileInputStream fStreamPlayer, fStreamLeaderboard;
         ObjectInputStream oStreamPlayer, oStreamLeaderboard;  
@@ -46,6 +118,7 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
 
         try 
         {
+            //retrieves leaderboard data
             inFileLeaderboard = new File("src/recyclingservice/data/leaderboard/leaderboard.dat");
             fStreamLeaderboard = new FileInputStream(inFileLeaderboard);
             oStreamLeaderboard = new ObjectInputStream(fStreamLeaderboard);
@@ -62,6 +135,7 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
             
             PlayerHighScore pi = (PlayerHighScore) oStreamPlayer.readObject();
             
+            //sets the last value of the leaderboard as the player's value
             leaderboardValues[10] = pi.getPlayerValues();
             
             oStreamPlayer.close();
@@ -69,7 +143,7 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
             leaderboardValues = sortTable(leaderboardValues);
             
             
-            
+            //inserts data into table
             for (int row = 0; row < 10; row++)
             {
                 for (int col = 1; col < 5; col++)
@@ -85,14 +159,15 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         {
             System.out.println(e1);
         }
-        catch (ClassNotFoundException e2)
+        catch (ClassNotFoundException e)
         {
-            System.out.println(e2); 
+            System.out.println(e); 
         }
 
         
     }
     
+    //takes the values of the table an re-organises them in the event that a player beats someone on the leaderboard
     private String[][] sortTable(String[][] table)
     {
         boolean failState;
@@ -101,8 +176,10 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
             
             for (int x = 0; x < table.length - 1 ; x++)
             {
+                //compares the the score value of the table current index with the value of the next index (the value below it)
                 if (Integer.parseInt(table[x][0]) < Integer.parseInt(table[x + 1][0]))
                 {
+                    //if the value below is higher, the table values are switched
                     String[] tempval = table[x];
 
                     table[x] = table[x + 1];
@@ -113,11 +190,15 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
                 }
             }
         }
+        //if a switch occurs, repeat the loop until the table is properlly organised
         while (failState);
         
+        //returns the new organised table
         return table;
     }
     
+    //save the new leaderboard values so that players that end up on the leaderboard have their scores saved
+    //Note: there is a backup to the data files provided in the "data" directory if you wish to reset the leaderboard
     private void saveLeaderboard(String[][] leaderboard)
     {
         File outFile;
@@ -142,25 +223,22 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         {
             System.out.println(e);
         }
-        /*catch (ClassNotFoundException e2)
-        {
-            
-        }*/
     }
     
     //sets extra styling for tables
     private void setExtraStyling()
     {
+        //changes to table headers so that they match the style
         //https://stackoverflow.com/questions/4408644/how-can-i-change-the-font-of-a-jtables-header
         tblLeaderboard.getTableHeader().setFont(new java.awt.Font("Segoe UI", 1, 36));
         tblLeaderboard.getTableHeader().setForeground(fgColor);
         tblResult.getTableHeader().setFont(new java.awt.Font("Segoe UI", 1, 36));
         tblResult.getTableHeader().setForeground(fgColor);
-        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
         tblLeaderboard.getTableHeader().setOpaque(true);
         tblLeaderboard.getTableHeader().setBackground(bgColor);
-        
+
         //couldn't find any other way to change the table header background colour
+        //I believe this issue is caused by the default renderer used for the tables
         //https://stackoverflow.com/a/15280574
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
 
@@ -175,6 +253,75 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         {
             tblResult.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer);
         }
+        
+        //adjust scroll sensetivity of the scrollPane
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(10);
+    }
+    
+    //sets a simple percentage depending on your score in the results table
+    private void setTopPercentage()
+    {
+        //if players end up on the leaderboard
+        if (playerScore > 300)
+        {
+            String leaderboardScore;
+            //loops through the leaderboard
+            for (int x = 0; x < 10; x++)
+            {
+                /*
+                "getValueAt" method returns as an Object, typically this would mean that it could be simply parsed as an Integer
+                using "(int)" however, in this case, the value stored inside the Object is a String and therfore must be parsed into a
+                String before it can be parsed into an Integer
+                */
+                leaderboardScore = (tblLeaderboard.getValueAt(x, 1)).toString();
+                
+                //if your score is equal to or higher than the person on the leaderboard, your top score will be from 1-10%
+                /*
+                Note: this is only accurate if we assume that 100 people submited their scores, setting the value as top 1% would
+                likely be more accurate 
+                */
+                if (playerScore >= Integer.parseInt(leaderboardScore))
+                {
+                    percentageScore = (x + 1) + "%";
+                    break;
+                }
+            }
+        }
+        else if (playerScore > 200)
+        {
+            percentageScore = "20%";
+        }
+        else if (playerScore > 100)
+        {
+            percentageScore = "50%";
+        }
+        else if (playerScore > 50)
+        {
+            percentageScore = "70%";
+        }
+        else if (playerScore > 0)
+        {
+            percentageScore = "90%";
+        }
+        else
+        {
+            percentageScore = "100%";
+        }
+        
+        //sets the percentage score in the results table
+        tblResult.setValueAt(percentageScore, 0, 0);
+    }
+    
+    //sets values in results table
+    private void setDetailTableValues()
+    {
+        //for percentage score (aka first column)
+        setTopPercentage();
+        
+        tblResult.setValueAt(Integer.toString(playerScore), 0, 1);
+        tblResult.setValueAt(username, 0, 2);
+        tblResult.setValueAt(fName, 0, 3);
+        tblResult.setValueAt(lName, 0, 4);
     }
 
     /**
@@ -184,7 +331,8 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
@@ -211,7 +359,8 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         tblLeaderboard.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         tblLeaderboard.setForeground(fgColor);
         tblLeaderboard.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {"1.", "0", "x", "y", "z"},
                 {"2.", "0", "x", "y", "z"},
                 {"3.", "0", "x", "y", "z"},
@@ -223,7 +372,8 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
                 {"9.", "0", "x", "y", "z"},
                 {"10.", "0", "x", "y", "z"}
             },
-            new String [] {
+            new String []
+            {
                 "Top", "Score", "Username", "Name", "Surname"
             }
         ));
@@ -238,10 +388,12 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         tblResult.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         tblResult.setForeground(fgColor);
         tblResult.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {"0%", "0", "x", "y", "z"}
             },
-            new String [] {
+            new String []
+            {
                 "Top", "Score", "Username", "Name", "Surname"
             }
         ));
@@ -258,8 +410,10 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         btnReplay.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnReplay.setForeground(fgColor);
         btnReplay.setText("Retry");
-        btnReplay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnReplay.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnReplayActionPerformed(evt);
             }
         });
@@ -268,8 +422,10 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         btnSubmit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnSubmit.setForeground(fgColor);
         btnSubmit.setText("Submit Score");
-        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnSubmit.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnSubmitActionPerformed(evt);
             }
         });
@@ -278,8 +434,10 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
         btnHome.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnHome.setForeground(fgColor);
         btnHome.setText("Home");
-        btnHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        btnHome.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 btnHomeActionPerformed(evt);
             }
         });
@@ -312,9 +470,9 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
                 .addComponent(btnReplay, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(107, Short.MAX_VALUE))
+                .addContainerGap(113, Short.MAX_VALUE))
         );
 
         jScrollPane1.setViewportView(jPanel1);
@@ -335,23 +493,20 @@ public class GameLeaderboardGUI extends javax.swing.JFrame
 
     private void btnReplayActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnReplayActionPerformed
     {//GEN-HEADEREND:event_btnReplayActionPerformed
-        // TODO add your handling code here:
-        new GamePlayGUI().main(null);
+        new GameRulesGUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_btnReplayActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnSubmitActionPerformed
     {//GEN-HEADEREND:event_btnSubmitActionPerformed
-        // TODO add your handling code here:
-        new GameSubmitGUI().main(null);
+        new GameSubmitGUI(playerScore).setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnHomeActionPerformed
     {//GEN-HEADEREND:event_btnHomeActionPerformed
+        new HomePage().setVisible(true);
         dispose();
-        HomePage HPUI = new HomePage();
-        HPUI.setVisible(true);
     }//GEN-LAST:event_btnHomeActionPerformed
 
     /**
