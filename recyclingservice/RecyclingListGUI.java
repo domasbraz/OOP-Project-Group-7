@@ -5,20 +5,67 @@
 package recyclingservice;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 
 /**
  *
  * @author davog
  */
-public class RecyclingListGUI extends javax.swing.JFrame {
-
+public class RecyclingListGUI extends javax.swing.JFrame{
+    
+    
+    ArrayList<JLabel> DTs = new ArrayList<JLabel>();
+    ArrayList<JLabel> EIs = new ArrayList<JLabel>();
+    ArrayList<JLabel> RTs = new ArrayList<JLabel>();
+    ArrayList<JLabel> Descriptions = new ArrayList<JLabel>();
+    ArrayList<JLabel> Names = new ArrayList<JLabel>();
+    ArrayList<JLabel> Types = new ArrayList<JLabel>();
+    ArrayList<JLabel> Recyclables = new ArrayList<JLabel>();
+    ArrayList<JLabel> Images = new ArrayList<JLabel>();
+    ArrayList<JPanel> Objs = new ArrayList<JPanel>();
+    
+     ArrayList<JComboBox> MCBs = new ArrayList<JComboBox>();
+    
+    ArrayList<RecyclingMaterial> recyclingMaterials = new ArrayList<RecyclingMaterial>();
+    ArrayList<RecyclingObj> recyclingObjects = new ArrayList<RecyclingObj>();
+    
+    
+    
     /**
      * Creates new form RecyclingListGUI
      */
     public RecyclingListGUI() {
         initComponents();
         getContentPane().setBackground(new Color(30,30,30));
+        
+        
+        DTs.add(DT1);DTs.add(DT2);DTs.add(DT3);DTs.add(DT4);DTs.add(DT5);DTs.add(DT6);DTs.add(DT7);DTs.add(DT8);DTs.add(DT9);DTs.add(DT10);DTs.add(DT11);DTs.add(DT12);DTs.add(DT13);DTs.add(DT14);
+        EIs.add(EI1);EIs.add(EI2);EIs.add(EI3);EIs.add(EI4);EIs.add(EI5);EIs.add(EI6);EIs.add(EI7);EIs.add(EI8);EIs.add(EI9);EIs.add(EI10);EIs.add(EI11);EIs.add(EI12);EIs.add(EI13);EIs.add(EI14);
+        RTs.add(RT1);RTs.add(RT2);RTs.add(RT3);RTs.add(RT4);RTs.add(RT5);RTs.add(RT6);RTs.add(RT7);RTs.add(RT8);RTs.add(RT9);RTs.add(RT10);RTs.add(RT11);RTs.add(RT12);RTs.add(RT13);RTs.add(RT14);
+        Descriptions.add(Description1);Descriptions.add(Description2);Descriptions.add(Description3);Descriptions.add(Description4);Descriptions.add(Description5);Descriptions.add(Description6);Descriptions.add(Description7);
+        Descriptions.add(Description8);Descriptions.add(Description9);Descriptions.add(Description10);Descriptions.add(Description11);Descriptions.add(Description12);Descriptions.add(Description13);Descriptions.add(Description14);
+        Names.add(Name1);Names.add(Name2);Names.add(Name3);Names.add(Name4);Names.add(Name5);Names.add(Name6);Names.add(Name7);Names.add(Name8);Names.add(Name9);Names.add(Name10);Names.add(Name11);Names.add(Name12);Names.add(Name13);Names.add(Name14);
+        Types.add(Type1);Types.add(Type2);Types.add(Type3);Types.add(Type4);Types.add(Type5);Types.add(Type6);Types.add(Type7);Types.add(Type8);Types.add(Type9);Types.add(Type10);Types.add(Type11);Types.add(Type12);Types.add(Type13);Types.add(Type14);
+        Recyclables.add(Recyclable1);Recyclables.add(Recyclable2);Recyclables.add(Recyclable3);Recyclables.add(Recyclable4);Recyclables.add(Recyclable5);Recyclables.add(Recyclable6);Recyclables.add(Recyclable7);
+        Recyclables.add(Recyclable8);Recyclables.add(Recyclable9);Recyclables.add(Recyclable10);Recyclables.add(Recyclable11);Recyclables.add(Recyclable12);Recyclables.add(Recyclable13);Recyclables.add(Recyclable14);
+        Images.add(img1); Images.add(img2); Images.add(img3); Images.add(img4); Images.add(img5); Images.add(img6); Images.add(img7); Images.add(img8); Images.add(img9); Images.add(img10); Images.add(img11); Images.add(img12); Images.add(img13); Images.add(img14);
+        MCBs.add(MaterialsCB1);MCBs.add(MaterialsCB2);MCBs.add(MaterialsCB3);MCBs.add(MaterialsCB4);MCBs.add(MaterialsCB5);MCBs.add(MaterialsCB6);MCBs.add(MaterialsCB7);
+        MCBs.add(MaterialsCB8);MCBs.add(MaterialsCB9);MCBs.add(MaterialsCB10);MCBs.add(MaterialsCB11);MCBs.add(MaterialsCB12);MCBs.add(MaterialsCB13);MCBs.add(MaterialsCB14);
+        Objs.add(Obj1);Objs.add(Obj2);Objs.add(Obj3);Objs.add(Obj4);Objs.add(Obj5);Objs.add(Obj6);Objs.add(Obj7);Objs.add(Obj8);Objs.add(Obj9);Objs.add(Obj10);Objs.add(Obj11);Objs.add(Obj12);Objs.add(Obj13);Objs.add(Obj14);
+         
+        //writeData();
+        
+        loadObjData();
+        
+        //Obj1.setVisible(false);
     }
 
     /**
@@ -34,11 +81,12 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         SearchBtn = new javax.swing.JButton();
         BackBtn = new javax.swing.JButton();
         scrollPane1 = new java.awt.ScrollPane();
-        MaterialsPnl = new javax.swing.JPanel();
+        ObjectsPnl = new javax.swing.JPanel();
         Obj1 = new javax.swing.JPanel();
         Name1 = new javax.swing.JLabel();
         Type1 = new javax.swing.JLabel();
         ImgPanel1 = new javax.swing.JPanel();
+        img1 = new javax.swing.JLabel();
         Description1 = new javax.swing.JLabel();
         MaterialsLbl1 = new javax.swing.JLabel();
         Recyclable1 = new javax.swing.JLabel();
@@ -53,6 +101,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         Name2 = new javax.swing.JLabel();
         Type2 = new javax.swing.JLabel();
         ImgPanel2 = new javax.swing.JPanel();
+        img2 = new javax.swing.JLabel();
         Description2 = new javax.swing.JLabel();
         MaterialsLbl2 = new javax.swing.JLabel();
         Recyclable2 = new javax.swing.JLabel();
@@ -67,6 +116,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         Name3 = new javax.swing.JLabel();
         Type3 = new javax.swing.JLabel();
         ImgPanel3 = new javax.swing.JPanel();
+        img3 = new javax.swing.JLabel();
         Description3 = new javax.swing.JLabel();
         MaterialsLbl3 = new javax.swing.JLabel();
         Recyclable3 = new javax.swing.JLabel();
@@ -81,6 +131,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         Name4 = new javax.swing.JLabel();
         Type4 = new javax.swing.JLabel();
         ImgPanel4 = new javax.swing.JPanel();
+        img4 = new javax.swing.JLabel();
         Description4 = new javax.swing.JLabel();
         MaterialsLbl4 = new javax.swing.JLabel();
         Recyclable4 = new javax.swing.JLabel();
@@ -95,6 +146,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         Name5 = new javax.swing.JLabel();
         Type5 = new javax.swing.JLabel();
         ImgPanel5 = new javax.swing.JPanel();
+        img5 = new javax.swing.JLabel();
         Description5 = new javax.swing.JLabel();
         MaterialsLbl5 = new javax.swing.JLabel();
         Recyclable5 = new javax.swing.JLabel();
@@ -109,6 +161,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         Name6 = new javax.swing.JLabel();
         Type6 = new javax.swing.JLabel();
         ImgPanel6 = new javax.swing.JPanel();
+        img6 = new javax.swing.JLabel();
         Description6 = new javax.swing.JLabel();
         MaterialsLbl6 = new javax.swing.JLabel();
         Recyclable6 = new javax.swing.JLabel();
@@ -119,6 +172,126 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         RTLbl6 = new javax.swing.JLabel();
         RT6 = new javax.swing.JLabel();
         EI6 = new javax.swing.JLabel();
+        Obj7 = new javax.swing.JPanel();
+        Name7 = new javax.swing.JLabel();
+        Type7 = new javax.swing.JLabel();
+        ImgPanel7 = new javax.swing.JPanel();
+        img7 = new javax.swing.JLabel();
+        Description7 = new javax.swing.JLabel();
+        MaterialsLbl7 = new javax.swing.JLabel();
+        Recyclable7 = new javax.swing.JLabel();
+        EILbl7 = new javax.swing.JLabel();
+        MaterialsCB7 = new javax.swing.JComboBox<>();
+        DTLbl7 = new javax.swing.JLabel();
+        DT7 = new javax.swing.JLabel();
+        RTLbl7 = new javax.swing.JLabel();
+        RT7 = new javax.swing.JLabel();
+        EI7 = new javax.swing.JLabel();
+        Obj8 = new javax.swing.JPanel();
+        Name8 = new javax.swing.JLabel();
+        Type8 = new javax.swing.JLabel();
+        ImgPanel8 = new javax.swing.JPanel();
+        img8 = new javax.swing.JLabel();
+        Description8 = new javax.swing.JLabel();
+        MaterialsLbl8 = new javax.swing.JLabel();
+        Recyclable8 = new javax.swing.JLabel();
+        EILbl8 = new javax.swing.JLabel();
+        MaterialsCB8 = new javax.swing.JComboBox<>();
+        DTLbl8 = new javax.swing.JLabel();
+        DT8 = new javax.swing.JLabel();
+        RTLbl8 = new javax.swing.JLabel();
+        RT8 = new javax.swing.JLabel();
+        EI8 = new javax.swing.JLabel();
+        Obj9 = new javax.swing.JPanel();
+        Name9 = new javax.swing.JLabel();
+        Type9 = new javax.swing.JLabel();
+        ImgPanel9 = new javax.swing.JPanel();
+        img9 = new javax.swing.JLabel();
+        Description9 = new javax.swing.JLabel();
+        MaterialsLbl9 = new javax.swing.JLabel();
+        Recyclable9 = new javax.swing.JLabel();
+        EILbl9 = new javax.swing.JLabel();
+        MaterialsCB9 = new javax.swing.JComboBox<>();
+        DTLbl9 = new javax.swing.JLabel();
+        DT9 = new javax.swing.JLabel();
+        RTLbl9 = new javax.swing.JLabel();
+        RT9 = new javax.swing.JLabel();
+        EI9 = new javax.swing.JLabel();
+        Obj10 = new javax.swing.JPanel();
+        Name10 = new javax.swing.JLabel();
+        Type10 = new javax.swing.JLabel();
+        ImgPanel10 = new javax.swing.JPanel();
+        img10 = new javax.swing.JLabel();
+        Description10 = new javax.swing.JLabel();
+        MaterialsLbl10 = new javax.swing.JLabel();
+        Recyclable10 = new javax.swing.JLabel();
+        EILbl10 = new javax.swing.JLabel();
+        MaterialsCB10 = new javax.swing.JComboBox<>();
+        DTLbl10 = new javax.swing.JLabel();
+        DT10 = new javax.swing.JLabel();
+        RTLbl10 = new javax.swing.JLabel();
+        RT10 = new javax.swing.JLabel();
+        EI10 = new javax.swing.JLabel();
+        Obj11 = new javax.swing.JPanel();
+        Name11 = new javax.swing.JLabel();
+        Type11 = new javax.swing.JLabel();
+        ImgPanel11 = new javax.swing.JPanel();
+        img11 = new javax.swing.JLabel();
+        Description11 = new javax.swing.JLabel();
+        MaterialsLbl11 = new javax.swing.JLabel();
+        Recyclable11 = new javax.swing.JLabel();
+        EILbl11 = new javax.swing.JLabel();
+        MaterialsCB11 = new javax.swing.JComboBox<>();
+        DTLbl11 = new javax.swing.JLabel();
+        DT11 = new javax.swing.JLabel();
+        RTLbl11 = new javax.swing.JLabel();
+        RT11 = new javax.swing.JLabel();
+        EI11 = new javax.swing.JLabel();
+        Obj12 = new javax.swing.JPanel();
+        Name12 = new javax.swing.JLabel();
+        Type12 = new javax.swing.JLabel();
+        ImgPanel12 = new javax.swing.JPanel();
+        img12 = new javax.swing.JLabel();
+        Description12 = new javax.swing.JLabel();
+        MaterialsLbl12 = new javax.swing.JLabel();
+        Recyclable12 = new javax.swing.JLabel();
+        EILbl12 = new javax.swing.JLabel();
+        MaterialsCB12 = new javax.swing.JComboBox<>();
+        DTLbl12 = new javax.swing.JLabel();
+        DT12 = new javax.swing.JLabel();
+        RTLbl12 = new javax.swing.JLabel();
+        RT12 = new javax.swing.JLabel();
+        EI12 = new javax.swing.JLabel();
+        Obj13 = new javax.swing.JPanel();
+        Name13 = new javax.swing.JLabel();
+        Type13 = new javax.swing.JLabel();
+        ImgPanel13 = new javax.swing.JPanel();
+        img13 = new javax.swing.JLabel();
+        Description13 = new javax.swing.JLabel();
+        MaterialsLbl13 = new javax.swing.JLabel();
+        Recyclable13 = new javax.swing.JLabel();
+        EILbl13 = new javax.swing.JLabel();
+        MaterialsCB13 = new javax.swing.JComboBox<>();
+        DTLbl13 = new javax.swing.JLabel();
+        DT13 = new javax.swing.JLabel();
+        RTLbl13 = new javax.swing.JLabel();
+        RT13 = new javax.swing.JLabel();
+        EI13 = new javax.swing.JLabel();
+        Obj14 = new javax.swing.JPanel();
+        Name14 = new javax.swing.JLabel();
+        Type14 = new javax.swing.JLabel();
+        ImgPanel14 = new javax.swing.JPanel();
+        img14 = new javax.swing.JLabel();
+        Description14 = new javax.swing.JLabel();
+        MaterialsLbl14 = new javax.swing.JLabel();
+        Recyclable14 = new javax.swing.JLabel();
+        EILbl14 = new javax.swing.JLabel();
+        MaterialsCB14 = new javax.swing.JComboBox<>();
+        DTLbl14 = new javax.swing.JLabel();
+        DT14 = new javax.swing.JLabel();
+        RTLbl14 = new javax.swing.JLabel();
+        RT14 = new javax.swing.JLabel();
+        EI14 = new javax.swing.JLabel();
         NavBar = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         HomeBtn = new javax.swing.JButton();
@@ -129,9 +302,14 @@ public class RecyclingListGUI extends javax.swing.JFrame {
 
         SearchField.setBackground(new java.awt.Color(102, 204, 255));
         SearchField.setText("Search");
+        SearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SearchFieldKeyPressed(evt);
+            }
+        });
 
         SearchBtn.setBackground(new java.awt.Color(102, 204, 255));
-        SearchBtn.setText("⌕");
+        SearchBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recyclingservice/icons/Spyglass.png"))); // NOI18N
         SearchBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         SearchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +318,7 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         });
 
         BackBtn.setBackground(new java.awt.Color(102, 204, 255));
-        BackBtn.setText("⇐");
+        BackBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recyclingservice/icons/Back.png"))); // NOI18N
         BackBtn.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -151,8 +329,8 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         scrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         scrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        MaterialsPnl.setBackground(new java.awt.Color(255, 51, 51));
-        MaterialsPnl.setOpaque(false);
+        ObjectsPnl.setBackground(new java.awt.Color(255, 51, 51));
+        ObjectsPnl.setOpaque(false);
 
         Obj1.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -174,15 +352,22 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         ImgPanel1.setLayout(ImgPanel1Layout);
         ImgPanel1Layout.setHorizontalGroup(
             ImgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGroup(ImgPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img1, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ImgPanel1Layout.setVerticalGroup(
             ImgPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(ImgPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Description1.setBackground(new java.awt.Color(0, 175, 255));
         Description1.setText("Description");
+        Description1.setToolTipText("");
         Description1.setOpaque(true);
 
         MaterialsLbl1.setBackground(new java.awt.Color(0, 175, 255));
@@ -237,10 +422,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj1Layout.createSequentialGroup()
-                        .addComponent(Description1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj1Layout.createSequentialGroup()
+                        .addComponent(Description1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Obj1Layout.createSequentialGroup()
                         .addComponent(Name1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -256,10 +441,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                             .addComponent(MaterialsLbl1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EI1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB1, 0, 104, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj1Layout.setVerticalGroup(
@@ -315,11 +500,17 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         ImgPanel2.setLayout(ImgPanel2Layout);
         ImgPanel2Layout.setHorizontalGroup(
             ImgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGroup(ImgPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img2, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ImgPanel2Layout.setVerticalGroup(
             ImgPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(ImgPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Description2.setBackground(new java.awt.Color(0, 175, 255));
@@ -378,10 +569,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj2Layout.createSequentialGroup()
-                        .addComponent(Description2, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj2Layout.createSequentialGroup()
+                        .addComponent(Description2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Obj2Layout.createSequentialGroup()
                         .addComponent(Name2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -397,10 +588,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                             .addComponent(MaterialsLbl2, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EI2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj2Layout.setVerticalGroup(
@@ -456,11 +647,17 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         ImgPanel3.setLayout(ImgPanel3Layout);
         ImgPanel3Layout.setHorizontalGroup(
             ImgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGroup(ImgPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img3, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ImgPanel3Layout.setVerticalGroup(
             ImgPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 151, Short.MAX_VALUE)
+            .addGroup(ImgPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img3, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Description3.setBackground(new java.awt.Color(0, 175, 255));
@@ -519,10 +716,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj3Layout.createSequentialGroup()
-                        .addComponent(Description3, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj3Layout.createSequentialGroup()
+                        .addComponent(Description3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Obj3Layout.createSequentialGroup()
                         .addComponent(Name3, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -538,10 +735,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                             .addComponent(MaterialsLbl3, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EI3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj3Layout.setVerticalGroup(
@@ -597,11 +794,17 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         ImgPanel4.setLayout(ImgPanel4Layout);
         ImgPanel4Layout.setHorizontalGroup(
             ImgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGroup(ImgPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img4, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ImgPanel4Layout.setVerticalGroup(
             ImgPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(ImgPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Description4.setBackground(new java.awt.Color(0, 175, 255));
@@ -660,10 +863,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj4Layout.createSequentialGroup()
-                        .addComponent(Description4, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj4Layout.createSequentialGroup()
+                        .addComponent(Description4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable4, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Obj4Layout.createSequentialGroup()
                         .addComponent(Name4, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -679,10 +882,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                             .addComponent(MaterialsLbl4, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB4, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EI4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj4Layout.setVerticalGroup(
@@ -738,11 +941,17 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         ImgPanel5.setLayout(ImgPanel5Layout);
         ImgPanel5Layout.setHorizontalGroup(
             ImgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGroup(ImgPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img5, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ImgPanel5Layout.setVerticalGroup(
             ImgPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 151, Short.MAX_VALUE)
+            .addGroup(ImgPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img5, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Description5.setBackground(new java.awt.Color(0, 175, 255));
@@ -801,10 +1010,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj5Layout.createSequentialGroup()
-                        .addComponent(Description5, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj5Layout.createSequentialGroup()
+                        .addComponent(Description5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Obj5Layout.createSequentialGroup()
                         .addComponent(Name5, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -820,10 +1029,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                             .addComponent(MaterialsLbl5, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB5, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EI5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB5, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj5Layout.setVerticalGroup(
@@ -879,11 +1088,17 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         ImgPanel6.setLayout(ImgPanel6Layout);
         ImgPanel6Layout.setHorizontalGroup(
             ImgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 167, Short.MAX_VALUE)
+            .addGroup(ImgPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img6, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
         ImgPanel6Layout.setVerticalGroup(
             ImgPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 151, Short.MAX_VALUE)
+            .addGroup(ImgPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img6, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         Description6.setBackground(new java.awt.Color(0, 175, 255));
@@ -942,10 +1157,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             .addGroup(Obj6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(Obj6Layout.createSequentialGroup()
-                        .addComponent(Description6, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj6Layout.createSequentialGroup()
+                        .addComponent(Description6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Recyclable6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Recyclable6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Obj6Layout.createSequentialGroup()
                         .addComponent(Name6, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -961,10 +1176,10 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                             .addComponent(MaterialsLbl6, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(Obj6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MaterialsCB6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DT6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RT6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(EI6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(EI6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         Obj6Layout.setVerticalGroup(
@@ -1000,51 +1215,1248 @@ public class RecyclingListGUI extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout MaterialsPnlLayout = new javax.swing.GroupLayout(MaterialsPnl);
-        MaterialsPnl.setLayout(MaterialsPnlLayout);
-        MaterialsPnlLayout.setHorizontalGroup(
-            MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MaterialsPnlLayout.createSequentialGroup()
+        Obj7.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name7.setBackground(new java.awt.Color(0, 175, 255));
+        Name7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name7.setText("Name");
+        Name7.setOpaque(true);
+
+        Type7.setBackground(new java.awt.Color(0, 175, 255));
+        Type7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type7.setText("Type");
+        Type7.setOpaque(true);
+
+        ImgPanel7.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel7Layout = new javax.swing.GroupLayout(ImgPanel7);
+        ImgPanel7.setLayout(ImgPanel7Layout);
+        ImgPanel7Layout.setHorizontalGroup(
+            ImgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MaterialsPnlLayout.createSequentialGroup()
-                        .addComponent(Obj6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(MaterialsPnlLayout.createSequentialGroup()
-                        .addGroup(MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(Obj4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(Obj3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Obj5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(img7, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        MaterialsPnlLayout.setVerticalGroup(
-            MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(MaterialsPnlLayout.createSequentialGroup()
+        ImgPanel7Layout.setVerticalGroup(
+            ImgPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Obj1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Obj4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Obj5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Obj3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(MaterialsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Obj6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Obj2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 9, Short.MAX_VALUE))
+                .addComponent(img7, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        scrollPane1.add(MaterialsPnl);
+        Description7.setBackground(new java.awt.Color(0, 175, 255));
+        Description7.setText("Description");
+        Description7.setOpaque(true);
+
+        MaterialsLbl7.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl7.setText("Materials");
+        MaterialsLbl7.setOpaque(true);
+
+        Recyclable7.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable7.setText("recyclable");
+        Recyclable7.setOpaque(true);
+
+        EILbl7.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl7.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl7.setOpaque(true);
+
+        MaterialsCB7.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB7.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl7.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl7.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl7.setOpaque(true);
+
+        DT7.setBackground(new java.awt.Color(0, 175, 255));
+        DT7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT7.setText("10 years");
+        DT7.setOpaque(true);
+
+        RTLbl7.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl7.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl7.setOpaque(true);
+
+        RT7.setBackground(new java.awt.Color(0, 175, 255));
+        RT7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT7.setText("Plastic");
+        RT7.setOpaque(true);
+
+        EI7.setBackground(new java.awt.Color(0, 175, 255));
+        EI7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI7.setText("9/10");
+        EI7.setOpaque(true);
+
+        javax.swing.GroupLayout Obj7Layout = new javax.swing.GroupLayout(Obj7);
+        Obj7.setLayout(Obj7Layout);
+        Obj7Layout.setHorizontalGroup(
+            Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj7Layout.createSequentialGroup()
+                        .addComponent(Name7, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj7Layout.createSequentialGroup()
+                        .addComponent(Description7, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable7, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE))
+                    .addGroup(Obj7Layout.createSequentialGroup()
+                        .addComponent(ImgPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(EILbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(DTLbl7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(RTLbl7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                            .addComponent(MaterialsLbl7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(MaterialsCB7, 0, 104, Short.MAX_VALUE)
+                            .addComponent(DT7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(RT7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EI7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj7Layout.setVerticalGroup(
+            Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name7)
+                    .addComponent(Type7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj7Layout.createSequentialGroup()
+                        .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl7, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Recyclable7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description7, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj8.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name8.setBackground(new java.awt.Color(0, 175, 255));
+        Name8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name8.setText("Name");
+        Name8.setOpaque(true);
+
+        Type8.setBackground(new java.awt.Color(0, 175, 255));
+        Type8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type8.setText("Type");
+        Type8.setOpaque(true);
+
+        ImgPanel8.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel8Layout = new javax.swing.GroupLayout(ImgPanel8);
+        ImgPanel8.setLayout(ImgPanel8Layout);
+        ImgPanel8Layout.setHorizontalGroup(
+            ImgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img8, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel8Layout.setVerticalGroup(
+            ImgPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img8, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description8.setBackground(new java.awt.Color(0, 175, 255));
+        Description8.setText("Description");
+        Description8.setOpaque(true);
+
+        MaterialsLbl8.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl8.setText("Materials");
+        MaterialsLbl8.setOpaque(true);
+
+        Recyclable8.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable8.setText("recyclable");
+        Recyclable8.setOpaque(true);
+
+        EILbl8.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl8.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl8.setOpaque(true);
+
+        MaterialsCB8.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB8.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl8.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl8.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl8.setOpaque(true);
+
+        DT8.setBackground(new java.awt.Color(0, 175, 255));
+        DT8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT8.setText("10 years");
+        DT8.setOpaque(true);
+
+        RTLbl8.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl8.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl8.setOpaque(true);
+
+        RT8.setBackground(new java.awt.Color(0, 175, 255));
+        RT8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT8.setText("Plastic");
+        RT8.setOpaque(true);
+
+        EI8.setBackground(new java.awt.Color(0, 175, 255));
+        EI8.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI8.setText("9/10");
+        EI8.setOpaque(true);
+
+        javax.swing.GroupLayout Obj8Layout = new javax.swing.GroupLayout(Obj8);
+        Obj8.setLayout(Obj8Layout);
+        Obj8Layout.setHorizontalGroup(
+            Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj8Layout.createSequentialGroup()
+                        .addComponent(Description8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable8, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Obj8Layout.createSequentialGroup()
+                        .addComponent(Name8, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj8Layout.createSequentialGroup()
+                        .addComponent(ImgPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB8, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj8Layout.setVerticalGroup(
+            Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name8)
+                    .addComponent(Type8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj8Layout.createSequentialGroup()
+                        .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl8, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj9.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name9.setBackground(new java.awt.Color(0, 175, 255));
+        Name9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name9.setText("Name");
+        Name9.setOpaque(true);
+
+        Type9.setBackground(new java.awt.Color(0, 175, 255));
+        Type9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type9.setText("Type");
+        Type9.setOpaque(true);
+
+        ImgPanel9.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel9Layout = new javax.swing.GroupLayout(ImgPanel9);
+        ImgPanel9.setLayout(ImgPanel9Layout);
+        ImgPanel9Layout.setHorizontalGroup(
+            ImgPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img9, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel9Layout.setVerticalGroup(
+            ImgPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img9, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description9.setBackground(new java.awt.Color(0, 175, 255));
+        Description9.setText("Description");
+        Description9.setOpaque(true);
+
+        MaterialsLbl9.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl9.setText("Materials");
+        MaterialsLbl9.setOpaque(true);
+
+        Recyclable9.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable9.setText("recyclable");
+        Recyclable9.setOpaque(true);
+
+        EILbl9.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl9.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl9.setOpaque(true);
+
+        MaterialsCB9.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB9.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl9.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl9.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl9.setOpaque(true);
+
+        DT9.setBackground(new java.awt.Color(0, 175, 255));
+        DT9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT9.setText("10 years");
+        DT9.setOpaque(true);
+
+        RTLbl9.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl9.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl9.setOpaque(true);
+
+        RT9.setBackground(new java.awt.Color(0, 175, 255));
+        RT9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT9.setText("Plastic");
+        RT9.setOpaque(true);
+
+        EI9.setBackground(new java.awt.Color(0, 175, 255));
+        EI9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI9.setText("9/10");
+        EI9.setOpaque(true);
+
+        javax.swing.GroupLayout Obj9Layout = new javax.swing.GroupLayout(Obj9);
+        Obj9.setLayout(Obj9Layout);
+        Obj9Layout.setHorizontalGroup(
+            Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj9Layout.createSequentialGroup()
+                        .addComponent(Description9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Obj9Layout.createSequentialGroup()
+                        .addComponent(Name9, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj9Layout.createSequentialGroup()
+                        .addComponent(ImgPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl9, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl9, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB9, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj9Layout.setVerticalGroup(
+            Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name9)
+                    .addComponent(Type9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj9Layout.createSequentialGroup()
+                        .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT9, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl9, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj10.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name10.setBackground(new java.awt.Color(0, 175, 255));
+        Name10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name10.setText("Name");
+        Name10.setOpaque(true);
+
+        Type10.setBackground(new java.awt.Color(0, 175, 255));
+        Type10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type10.setText("Type");
+        Type10.setOpaque(true);
+
+        ImgPanel10.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel10Layout = new javax.swing.GroupLayout(ImgPanel10);
+        ImgPanel10.setLayout(ImgPanel10Layout);
+        ImgPanel10Layout.setHorizontalGroup(
+            ImgPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img10, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel10Layout.setVerticalGroup(
+            ImgPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img10, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description10.setBackground(new java.awt.Color(0, 175, 255));
+        Description10.setText("Description");
+        Description10.setOpaque(true);
+
+        MaterialsLbl10.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl10.setText("Materials");
+        MaterialsLbl10.setOpaque(true);
+
+        Recyclable10.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable10.setText("recyclable");
+        Recyclable10.setOpaque(true);
+
+        EILbl10.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl10.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl10.setOpaque(true);
+
+        MaterialsCB10.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB10.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl10.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl10.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl10.setOpaque(true);
+
+        DT10.setBackground(new java.awt.Color(0, 175, 255));
+        DT10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT10.setText("10 years");
+        DT10.setOpaque(true);
+
+        RTLbl10.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl10.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl10.setOpaque(true);
+
+        RT10.setBackground(new java.awt.Color(0, 175, 255));
+        RT10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT10.setText("Plastic");
+        RT10.setOpaque(true);
+
+        EI10.setBackground(new java.awt.Color(0, 175, 255));
+        EI10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI10.setText("9/10");
+        EI10.setOpaque(true);
+
+        javax.swing.GroupLayout Obj10Layout = new javax.swing.GroupLayout(Obj10);
+        Obj10.setLayout(Obj10Layout);
+        Obj10Layout.setHorizontalGroup(
+            Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj10Layout.createSequentialGroup()
+                        .addComponent(Description10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable10, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Obj10Layout.createSequentialGroup()
+                        .addComponent(Name10, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj10Layout.createSequentialGroup()
+                        .addComponent(ImgPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl10, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl10, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB10, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj10Layout.setVerticalGroup(
+            Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name10)
+                    .addComponent(Type10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj10Layout.createSequentialGroup()
+                        .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl10, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT10, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl10, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj11.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name11.setBackground(new java.awt.Color(0, 175, 255));
+        Name11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name11.setText("Name");
+        Name11.setOpaque(true);
+
+        Type11.setBackground(new java.awt.Color(0, 175, 255));
+        Type11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type11.setText("Type");
+        Type11.setOpaque(true);
+
+        ImgPanel11.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel11Layout = new javax.swing.GroupLayout(ImgPanel11);
+        ImgPanel11.setLayout(ImgPanel11Layout);
+        ImgPanel11Layout.setHorizontalGroup(
+            ImgPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img11, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel11Layout.setVerticalGroup(
+            ImgPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img11, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description11.setBackground(new java.awt.Color(0, 175, 255));
+        Description11.setText("Description");
+        Description11.setOpaque(true);
+
+        MaterialsLbl11.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl11.setText("Materials");
+        MaterialsLbl11.setOpaque(true);
+
+        Recyclable11.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable11.setText("recyclable");
+        Recyclable11.setOpaque(true);
+
+        EILbl11.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl11.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl11.setOpaque(true);
+
+        MaterialsCB11.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB11.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl11.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl11.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl11.setOpaque(true);
+
+        DT11.setBackground(new java.awt.Color(0, 175, 255));
+        DT11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT11.setText("10 years");
+        DT11.setOpaque(true);
+
+        RTLbl11.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl11.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl11.setOpaque(true);
+
+        RT11.setBackground(new java.awt.Color(0, 175, 255));
+        RT11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT11.setText("Plastic");
+        RT11.setOpaque(true);
+
+        EI11.setBackground(new java.awt.Color(0, 175, 255));
+        EI11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI11.setText("9/10");
+        EI11.setOpaque(true);
+
+        javax.swing.GroupLayout Obj11Layout = new javax.swing.GroupLayout(Obj11);
+        Obj11.setLayout(Obj11Layout);
+        Obj11Layout.setHorizontalGroup(
+            Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Obj11Layout.createSequentialGroup()
+                        .addComponent(Description11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable11, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(Obj11Layout.createSequentialGroup()
+                        .addComponent(Name11, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj11Layout.createSequentialGroup()
+                        .addComponent(ImgPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl11, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl11, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB11, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj11Layout.setVerticalGroup(
+            Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name11)
+                    .addComponent(Type11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj11Layout.createSequentialGroup()
+                        .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl11, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl11, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT11, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl11, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description11, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj12.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name12.setBackground(new java.awt.Color(0, 175, 255));
+        Name12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name12.setText("Name");
+        Name12.setOpaque(true);
+
+        Type12.setBackground(new java.awt.Color(0, 175, 255));
+        Type12.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type12.setText("Type");
+        Type12.setOpaque(true);
+
+        ImgPanel12.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel12Layout = new javax.swing.GroupLayout(ImgPanel12);
+        ImgPanel12.setLayout(ImgPanel12Layout);
+        ImgPanel12Layout.setHorizontalGroup(
+            ImgPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img12, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel12Layout.setVerticalGroup(
+            ImgPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img12, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description12.setBackground(new java.awt.Color(0, 175, 255));
+        Description12.setText("Description");
+        Description12.setOpaque(true);
+
+        MaterialsLbl12.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl12.setText("Materials");
+        MaterialsLbl12.setOpaque(true);
+
+        Recyclable12.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable12.setText("recyclable");
+        Recyclable12.setOpaque(true);
+
+        EILbl12.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl12.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl12.setOpaque(true);
+
+        MaterialsCB12.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB12.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl12.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl12.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl12.setOpaque(true);
+
+        DT12.setBackground(new java.awt.Color(0, 175, 255));
+        DT12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT12.setText("10 years");
+        DT12.setOpaque(true);
+
+        RTLbl12.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl12.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl12.setOpaque(true);
+
+        RT12.setBackground(new java.awt.Color(0, 175, 255));
+        RT12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT12.setText("Plastic");
+        RT12.setOpaque(true);
+
+        EI12.setBackground(new java.awt.Color(0, 175, 255));
+        EI12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI12.setText("9/10");
+        EI12.setOpaque(true);
+
+        javax.swing.GroupLayout Obj12Layout = new javax.swing.GroupLayout(Obj12);
+        Obj12.setLayout(Obj12Layout);
+        Obj12Layout.setHorizontalGroup(
+            Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj12Layout.createSequentialGroup()
+                        .addComponent(Description12, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj12Layout.createSequentialGroup()
+                        .addComponent(Name12, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj12Layout.createSequentialGroup()
+                        .addComponent(ImgPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl12, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB12, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj12Layout.setVerticalGroup(
+            Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name12)
+                    .addComponent(Type12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj12Layout.createSequentialGroup()
+                        .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl12, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description12, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj13.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name13.setBackground(new java.awt.Color(0, 175, 255));
+        Name13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name13.setText("Name");
+        Name13.setOpaque(true);
+
+        Type13.setBackground(new java.awt.Color(0, 175, 255));
+        Type13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type13.setText("Type");
+        Type13.setOpaque(true);
+
+        ImgPanel13.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel13Layout = new javax.swing.GroupLayout(ImgPanel13);
+        ImgPanel13.setLayout(ImgPanel13Layout);
+        ImgPanel13Layout.setHorizontalGroup(
+            ImgPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img13, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel13Layout.setVerticalGroup(
+            ImgPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img13, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description13.setBackground(new java.awt.Color(0, 175, 255));
+        Description13.setText("Description");
+        Description13.setOpaque(true);
+
+        MaterialsLbl13.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl13.setText("Materials");
+        MaterialsLbl13.setOpaque(true);
+
+        Recyclable13.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable13.setText("recyclable");
+        Recyclable13.setOpaque(true);
+
+        EILbl13.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl13.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl13.setOpaque(true);
+
+        MaterialsCB13.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB13.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl13.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl13.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl13.setOpaque(true);
+
+        DT13.setBackground(new java.awt.Color(0, 175, 255));
+        DT13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT13.setText("10 years");
+        DT13.setOpaque(true);
+
+        RTLbl13.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl13.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl13.setOpaque(true);
+
+        RT13.setBackground(new java.awt.Color(0, 175, 255));
+        RT13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT13.setText("Plastic");
+        RT13.setOpaque(true);
+
+        EI13.setBackground(new java.awt.Color(0, 175, 255));
+        EI13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI13.setText("9/10");
+        EI13.setOpaque(true);
+
+        javax.swing.GroupLayout Obj13Layout = new javax.swing.GroupLayout(Obj13);
+        Obj13.setLayout(Obj13Layout);
+        Obj13Layout.setHorizontalGroup(
+            Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj13Layout.createSequentialGroup()
+                        .addComponent(Description13, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj13Layout.createSequentialGroup()
+                        .addComponent(Name13, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj13Layout.createSequentialGroup()
+                        .addComponent(ImgPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl13, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB13, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj13Layout.setVerticalGroup(
+            Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj13Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name13)
+                    .addComponent(Type13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj13Layout.createSequentialGroup()
+                        .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl13, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl13, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT13, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl13, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description13, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        Obj14.setBackground(new java.awt.Color(102, 204, 255));
+
+        Name14.setBackground(new java.awt.Color(0, 175, 255));
+        Name14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Name14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Name14.setText("Name");
+        Name14.setOpaque(true);
+
+        Type14.setBackground(new java.awt.Color(0, 175, 255));
+        Type14.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        Type14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Type14.setText("Type");
+        Type14.setOpaque(true);
+
+        ImgPanel14.setBackground(new java.awt.Color(0, 175, 255));
+
+        javax.swing.GroupLayout ImgPanel14Layout = new javax.swing.GroupLayout(ImgPanel14);
+        ImgPanel14.setLayout(ImgPanel14Layout);
+        ImgPanel14Layout.setHorizontalGroup(
+            ImgPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img14, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        ImgPanel14Layout.setVerticalGroup(
+            ImgPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ImgPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(img14, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        Description14.setBackground(new java.awt.Color(0, 175, 255));
+        Description14.setText("Description");
+        Description14.setOpaque(true);
+
+        MaterialsLbl14.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsLbl14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        MaterialsLbl14.setText("Materials");
+        MaterialsLbl14.setOpaque(true);
+
+        Recyclable14.setBackground(new java.awt.Color(0, 175, 255));
+        Recyclable14.setText("recyclable");
+        Recyclable14.setOpaque(true);
+
+        EILbl14.setBackground(new java.awt.Color(0, 175, 255));
+        EILbl14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EILbl14.setText("<html>           <p>Enviromental Impact</p> </html>");
+        EILbl14.setOpaque(true);
+
+        MaterialsCB14.setBackground(new java.awt.Color(0, 175, 255));
+        MaterialsCB14.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Plastic", "Paper" }));
+
+        DTLbl14.setBackground(new java.awt.Color(0, 175, 255));
+        DTLbl14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DTLbl14.setText("<html>\n          <p>Decomposition Time</p>\n</html>");
+        DTLbl14.setOpaque(true);
+
+        DT14.setBackground(new java.awt.Color(0, 175, 255));
+        DT14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        DT14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DT14.setText("10 years");
+        DT14.setOpaque(true);
+
+        RTLbl14.setBackground(new java.awt.Color(0, 175, 255));
+        RTLbl14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RTLbl14.setText("<html>           <p>Recycling Type</p> </html>");
+        RTLbl14.setOpaque(true);
+
+        RT14.setBackground(new java.awt.Color(0, 175, 255));
+        RT14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        RT14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        RT14.setText("Plastic");
+        RT14.setOpaque(true);
+
+        EI14.setBackground(new java.awt.Color(0, 175, 255));
+        EI14.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        EI14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        EI14.setText("9/10");
+        EI14.setOpaque(true);
+
+        javax.swing.GroupLayout Obj14Layout = new javax.swing.GroupLayout(Obj14);
+        Obj14.setLayout(Obj14Layout);
+        Obj14Layout.setHorizontalGroup(
+            Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(Obj14Layout.createSequentialGroup()
+                        .addComponent(Description14, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Recyclable14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj14Layout.createSequentialGroup()
+                        .addComponent(Name14, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Type14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(Obj14Layout.createSequentialGroup()
+                        .addComponent(ImgPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(EILbl14, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(DTLbl14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(RTLbl14, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                            .addComponent(MaterialsLbl14, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RT14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EI14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MaterialsCB14, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        Obj14Layout.setVerticalGroup(
+            Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(Obj14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Name14)
+                    .addComponent(Type14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(Obj14Layout.createSequentialGroup()
+                        .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(MaterialsLbl14, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(MaterialsCB14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DT14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DTLbl14, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RTLbl14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RT14, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(EI14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(EILbl14, javax.swing.GroupLayout.DEFAULT_SIZE, 49, Short.MAX_VALUE)))
+                    .addComponent(ImgPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(Obj14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Recyclable14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Description14, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout ObjectsPnlLayout = new javax.swing.GroupLayout(ObjectsPnl);
+        ObjectsPnl.setLayout(ObjectsPnlLayout);
+        ObjectsPnlLayout.setHorizontalGroup(
+            ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ObjectsPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(Obj11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Obj9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Obj1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Obj3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Obj5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Obj7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Obj13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(Obj12, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        ObjectsPnlLayout.setVerticalGroup(
+            ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ObjectsPnlLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Obj2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Obj3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Obj4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Obj5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Obj6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ObjectsPnlLayout.createSequentialGroup()
+                        .addComponent(Obj8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Obj10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ObjectsPnlLayout.createSequentialGroup()
+                        .addComponent(Obj7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Obj9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Obj11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(ObjectsPnlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Obj13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Obj14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        scrollPane1.add(ObjectsPnl);
 
         NavBar.setBackground(new java.awt.Color(102, 204, 255));
 
         Title.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        Title.setForeground(new java.awt.Color(0, 175, 255));
         Title.setText("Recycling Object List");
 
         HomeBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recyclingservice/icons/home.png"))); // NOI18N
@@ -1080,26 +2492,26 @@ public class RecyclingListGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(639, Short.MAX_VALUE))
+                .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(NavBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(scrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 853, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(NavBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(SearchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BackBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SearchField))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(scrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32))
         );
@@ -1108,18 +2520,82 @@ public class RecyclingListGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackBtnActionPerformed
-       JOptionPane.showMessageDialog(null,"The Back function is not implemented yet");
+        for(int i=0;i<Objs.size();i++){
+            Objs.get(i).setVisible(true);
+        }
+        loadObjData();
+        
     }//GEN-LAST:event_BackBtnActionPerformed
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
-       JOptionPane.showMessageDialog(null,"The Search function is not implemented yet");
+        
+        String search = SearchField.getText();
+        
+        ArrayList<Integer> matchIds = new ArrayList<>();
+
+        
+        for(int i=0;i<Objs.size();i++){
+           RecyclingObj obj = recyclingObjects.get(i);
+           int len = search.length();
+           String name = obj.name;
+           len = Math.min(name.length(),len);
+          
+           if(name.substring(0,len).equalsIgnoreCase(search))
+           {
+               matchIds.add(i);
+           }
+        }
+        
+        int matchNum = matchIds.size();
+         
+        
+        if(matchNum<1){
+            JOptionPane.showMessageDialog(null, "No match Found"); 
+        }
+        else
+        for(int i=0;i<Objs.size();i++){
+            if(i>=matchNum){
+                Objs.get(i).setVisible(false);
+            }
+            else{
+                Objs.get(i).setVisible(true);
+                RecyclingObj obj = recyclingObjects.get(matchIds.get(i));
+                DTs.get(i).setText(String.valueOf(obj.getDecompositionTime()));
+                RTs.get(i).setText(obj.getRecyclingType());
+                EIs.get(i).setText(String.valueOf(obj.getEnviromentalImpact()));
+                //Descriptions.get(i).setText(obj.getDescription());
+                Names.get(i).setText(obj.getName());
+                Types.get(i).setText(obj.getType());
+                
+                String name = obj.getName().replaceAll("\\s", "");
+                ImageIcon icon = new ImageIcon("src/recyclingservice/icons/"+name+".png");
+                Images.get(i).setIcon(icon);
+
+                if(obj.isRecyclable() == true)  
+                Recyclables.get(i).setText("Recyclable");
+                else
+                Recyclables.get(i).setText("Not Recyclable");
+
+
+                MCBs.get(i).setModel(new javax.swing.DefaultComboBoxModel(obj.matNames));
+            }
+        }
+        
     }//GEN-LAST:event_SearchBtnActionPerformed
 
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
-       dispose();
-       HomePage HPUI = new HomePage();
-       HPUI.setVisible(true);
+       //dispose();
+       //HomePage HPUI = new HomePage();
+       //HPUI.setVisible(true);
+       JOptionPane.showMessageDialog(null,"Home button not working");
+       
     }//GEN-LAST:event_HomeBtnActionPerformed
+
+    private void SearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchFieldKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            SearchBtn.doClick();
+        }
+    }//GEN-LAST:event_SearchFieldKeyPressed
 
     /**
      * @param args the command line arguments
@@ -1155,99 +2631,406 @@ public class RecyclingListGUI extends javax.swing.JFrame {
             }
         });
     }
+    
+    /*public void writeData(){
+        setMaterials();
+        setObjects();
+        Write();
+    }
+    
+    public void setMaterials(){
+        addMat("Plastic",450,9.0, true);//0
+        addMat("Glass",4000,9.0, true);//1
+        addMat("Paper",0,0.3, true);//2
+        addMat("Cardboard",0.13,0.6, true);//3
+        addMat("Fabric",0.5,0.4, true);//4
+        addMat("Styrofoam",10000,9.4, false);//5
+        addMat("Wood",70,0, true);//6
+        addMat("Aluminium",200,2.0, true);//7
+        addMat("Iron",60,3.0, true);//8
+        addMat("Zinc",-1,4.0, true);//9
+        addMat("Copper",-1,5.0, true);//10
+        addMat("Tin",80,2.0, true);//11
+        addMat("Lead",-1,6.0, true);//12
+        addMat("Steel",60,3.0, true);//13
+        addMat("Polystyrene",500,7, false);//14
+        addMat("Ceramics",1000,2, false);//15
+        addMat("Organic",0,0, false);//16
+    }
+    
+    public void setObjects(){
+        
+       ArrayList<RecyclingMaterial> mats = new ArrayList<RecyclingMaterial>();
+       mats.add(recyclingMaterials.get(0));
+       addObj("Plastic Bottle", "Container",mats, "Plastic", "Clean and place in the recycling bin");
+               
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(11));
+       mats.add(recyclingMaterials.get(7));
+       mats.add(recyclingMaterials.get(13));
+       addObj("Food Can", "Container",mats, "Metal", "Rinse before placing in the recycling bin");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(3));
+       addObj("Box", "Container",mats, "Paper", "Clean, dry and place loosely in the recycling bin.");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(1));
+       addObj("Glass Bottle", "Container",mats, "Glass", "If clear,green or brown place in glass recycling bins");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(5));
+       mats.add(recyclingMaterials.get(14));
+       addObj("Foam cup", "Container",mats, "None", "Should be placed in the general waste bin");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(7));
+       addObj("FoilTray", "Container",mats, "Metal", "Can be placed in the recycling if completely clean.");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(9));
+       mats.add(recyclingMaterials.get(10));
+       mats.add(recyclingMaterials.get(12));
+       mats.add(recyclingMaterials.get(13));
+       addObj("Battery", "Tool",mats, "Metal", "Should be placed in special recycling drop-offs");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(4));
+       addObj("Clothes", "Clothes",mats, "Fabric", "Should be given to special Textile Recycling Facility");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(2));
+       addObj("Paper Waste", "Tool",mats, "Paper", "Should be placed in Paper recycling bin");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(6));
+       addObj("Wood Waste", "Waste",mats, "Wood", "This should be brought to a civic amenity agency");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(15));
+       addObj("Ceramic Pottery", "Tool",mats, "None", "Should not be placed in your local recycling bins");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(0));
+       mats.add(recyclingMaterials.get(1));
+       mats.add(recyclingMaterials.get(7));
+       mats.add(recyclingMaterials.get(8));
+       mats.add(recyclingMaterials.get(9));
+       mats.add(recyclingMaterials.get(10));
+       mats.add(recyclingMaterials.get(11));
+       mats.add(recyclingMaterials.get(12));
+       mats.add(recyclingMaterials.get(13));
+       addObj("E-Waste", "Waste",mats, "None", "Should not be placed in your local recycling bins");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(0));
+       addObj("Plastic Packaging", "Container",mats, "Plastic", "Clean and place in the recycling bin.");
+       
+       mats.clear();
+       mats.add(recyclingMaterials.get(16));
+       addObj("Food Waste", "Waste",mats, "None", "Place in the general bin");
+    }*/
+    
+    public void addMat(String name, double decompositionTime, double enviromentalImpact,boolean recyclable){
+        RecyclingMaterial mat = new RecyclingMaterial(name,decompositionTime,enviromentalImpact,recyclable);
+        recyclingMaterials.add(mat);
+        
+    }
+    
+    public void addObj(String name, String type,ArrayList<RecyclingMaterial> materials, String recyclingType, String description){
+        RecyclingObj obj = new RecyclingObj(name, type, materials, recyclingType, description);
+        recyclingObjects.add(obj);
+        
+    }
+    
+    public void loadObjData(){
+        Read();
+        String[] matNames;
+       
+        for(int i=0;i<recyclingObjects.size();i++){
+            RecyclingObj obj = recyclingObjects.get(i);
+            DTs.get(i).setText(String.valueOf(obj.getDecompositionTime()));
+            RTs.get(i).setText(obj.getRecyclingType());
+            EIs.get(i).setText(String.valueOf(obj.getEnviromentalImpact()));
+            Descriptions.get(i).setText(obj.getDescription());
+            Names.get(i).setText(obj.getName());
+            Types.get(i).setText(obj.getType());
+            
+           
+            String name = obj.getName().replaceAll("\\s", "");
+            ImageIcon icon = new ImageIcon("src/recyclingservice/icons/"+name+".png");
+            Images.get(i).setIcon(icon);
+            
+            if(obj.isRecyclable() == true && !obj.name.equals("E-Waste"))  
+            Recyclables.get(i).setText("Recyclable");
+            else
+            Recyclables.get(i).setText("Not Recyclable");
+            
+            
+            MCBs.get(i).setModel(new javax.swing.DefaultComboBoxModel(obj.matNames));
+            
+        }
+        //JOptionPane.showMessageDialog(null,"Load Completed");
+    }
+    
+    public void Write() {
+ 
+        File file;
+        FileOutputStream fileStream;
+        ObjectOutputStream objectStream;
+        
+        try{
+            file = new File("output.dat");
+            fileStream = new FileOutputStream(file);
+            objectStream = new ObjectOutputStream(fileStream);
+            
+            objectStream.writeObject(recyclingObjects);
+            objectStream.close();
+            
+            JOptionPane.showMessageDialog(null, "Saved");
+        }
+        catch(IOException e){
+            System.out.println(e);
+        }
+    }
+    
+    public void Read(){
+        File file;
+        FileInputStream fileStream;
+        ObjectInputStream outputStream;
+        try{
+            file = new File("output.dat");
+            fileStream = new FileInputStream(file);
+            outputStream = new ObjectInputStream(fileStream);
+            recyclingObjects = (ArrayList<RecyclingObj>)outputStream.readObject();
+            outputStream.close();
+            
+            //JOptionPane.showMessageDialog(null, "Load Completed");
+        }
+        catch(IOException|ClassNotFoundException e){
+            System.out.println(e);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BackBtn;
     private javax.swing.JLabel DT1;
+    private javax.swing.JLabel DT10;
+    private javax.swing.JLabel DT11;
+    private javax.swing.JLabel DT12;
+    private javax.swing.JLabel DT13;
+    private javax.swing.JLabel DT14;
     private javax.swing.JLabel DT2;
     private javax.swing.JLabel DT3;
     private javax.swing.JLabel DT4;
     private javax.swing.JLabel DT5;
     private javax.swing.JLabel DT6;
+    private javax.swing.JLabel DT7;
+    private javax.swing.JLabel DT8;
+    private javax.swing.JLabel DT9;
     private javax.swing.JLabel DTLbl1;
+    private javax.swing.JLabel DTLbl10;
+    private javax.swing.JLabel DTLbl11;
+    private javax.swing.JLabel DTLbl12;
+    private javax.swing.JLabel DTLbl13;
+    private javax.swing.JLabel DTLbl14;
     private javax.swing.JLabel DTLbl2;
     private javax.swing.JLabel DTLbl3;
     private javax.swing.JLabel DTLbl4;
     private javax.swing.JLabel DTLbl5;
     private javax.swing.JLabel DTLbl6;
+    private javax.swing.JLabel DTLbl7;
+    private javax.swing.JLabel DTLbl8;
+    private javax.swing.JLabel DTLbl9;
     private javax.swing.JLabel Description1;
+    private javax.swing.JLabel Description10;
+    private javax.swing.JLabel Description11;
+    private javax.swing.JLabel Description12;
+    private javax.swing.JLabel Description13;
+    private javax.swing.JLabel Description14;
     private javax.swing.JLabel Description2;
     private javax.swing.JLabel Description3;
     private javax.swing.JLabel Description4;
     private javax.swing.JLabel Description5;
     private javax.swing.JLabel Description6;
+    private javax.swing.JLabel Description7;
+    private javax.swing.JLabel Description8;
+    private javax.swing.JLabel Description9;
     private javax.swing.JLabel EI1;
+    private javax.swing.JLabel EI10;
+    private javax.swing.JLabel EI11;
+    private javax.swing.JLabel EI12;
+    private javax.swing.JLabel EI13;
+    private javax.swing.JLabel EI14;
     private javax.swing.JLabel EI2;
     private javax.swing.JLabel EI3;
     private javax.swing.JLabel EI4;
     private javax.swing.JLabel EI5;
     private javax.swing.JLabel EI6;
+    private javax.swing.JLabel EI7;
+    private javax.swing.JLabel EI8;
+    private javax.swing.JLabel EI9;
     private javax.swing.JLabel EILbl1;
+    private javax.swing.JLabel EILbl10;
+    private javax.swing.JLabel EILbl11;
+    private javax.swing.JLabel EILbl12;
+    private javax.swing.JLabel EILbl13;
+    private javax.swing.JLabel EILbl14;
     private javax.swing.JLabel EILbl2;
     private javax.swing.JLabel EILbl3;
     private javax.swing.JLabel EILbl4;
     private javax.swing.JLabel EILbl5;
     private javax.swing.JLabel EILbl6;
+    private javax.swing.JLabel EILbl7;
+    private javax.swing.JLabel EILbl8;
+    private javax.swing.JLabel EILbl9;
     private javax.swing.JButton HomeBtn;
     private javax.swing.JPanel ImgPanel1;
+    private javax.swing.JPanel ImgPanel10;
+    private javax.swing.JPanel ImgPanel11;
+    private javax.swing.JPanel ImgPanel12;
+    private javax.swing.JPanel ImgPanel13;
+    private javax.swing.JPanel ImgPanel14;
     private javax.swing.JPanel ImgPanel2;
     private javax.swing.JPanel ImgPanel3;
     private javax.swing.JPanel ImgPanel4;
     private javax.swing.JPanel ImgPanel5;
     private javax.swing.JPanel ImgPanel6;
+    private javax.swing.JPanel ImgPanel7;
+    private javax.swing.JPanel ImgPanel8;
+    private javax.swing.JPanel ImgPanel9;
     private javax.swing.JComboBox<String> MaterialsCB1;
+    private javax.swing.JComboBox<String> MaterialsCB10;
+    private javax.swing.JComboBox<String> MaterialsCB11;
+    private javax.swing.JComboBox<String> MaterialsCB12;
+    private javax.swing.JComboBox<String> MaterialsCB13;
+    private javax.swing.JComboBox<String> MaterialsCB14;
     private javax.swing.JComboBox<String> MaterialsCB2;
     private javax.swing.JComboBox<String> MaterialsCB3;
     private javax.swing.JComboBox<String> MaterialsCB4;
     private javax.swing.JComboBox<String> MaterialsCB5;
     private javax.swing.JComboBox<String> MaterialsCB6;
+    private javax.swing.JComboBox<String> MaterialsCB7;
+    private javax.swing.JComboBox<String> MaterialsCB8;
+    private javax.swing.JComboBox<String> MaterialsCB9;
     private javax.swing.JLabel MaterialsLbl1;
+    private javax.swing.JLabel MaterialsLbl10;
+    private javax.swing.JLabel MaterialsLbl11;
+    private javax.swing.JLabel MaterialsLbl12;
+    private javax.swing.JLabel MaterialsLbl13;
+    private javax.swing.JLabel MaterialsLbl14;
     private javax.swing.JLabel MaterialsLbl2;
     private javax.swing.JLabel MaterialsLbl3;
     private javax.swing.JLabel MaterialsLbl4;
     private javax.swing.JLabel MaterialsLbl5;
     private javax.swing.JLabel MaterialsLbl6;
-    private javax.swing.JPanel MaterialsPnl;
+    private javax.swing.JLabel MaterialsLbl7;
+    private javax.swing.JLabel MaterialsLbl8;
+    private javax.swing.JLabel MaterialsLbl9;
     private javax.swing.JLabel Name1;
+    private javax.swing.JLabel Name10;
+    private javax.swing.JLabel Name11;
+    private javax.swing.JLabel Name12;
+    private javax.swing.JLabel Name13;
+    private javax.swing.JLabel Name14;
     private javax.swing.JLabel Name2;
     private javax.swing.JLabel Name3;
     private javax.swing.JLabel Name4;
     private javax.swing.JLabel Name5;
     private javax.swing.JLabel Name6;
+    private javax.swing.JLabel Name7;
+    private javax.swing.JLabel Name8;
+    private javax.swing.JLabel Name9;
     private javax.swing.JPanel NavBar;
     private javax.swing.JPanel Obj1;
+    private javax.swing.JPanel Obj10;
+    private javax.swing.JPanel Obj11;
+    private javax.swing.JPanel Obj12;
+    private javax.swing.JPanel Obj13;
+    private javax.swing.JPanel Obj14;
     private javax.swing.JPanel Obj2;
     private javax.swing.JPanel Obj3;
     private javax.swing.JPanel Obj4;
     private javax.swing.JPanel Obj5;
     private javax.swing.JPanel Obj6;
+    private javax.swing.JPanel Obj7;
+    private javax.swing.JPanel Obj8;
+    private javax.swing.JPanel Obj9;
+    private javax.swing.JPanel ObjectsPnl;
     private javax.swing.JLabel RT1;
+    private javax.swing.JLabel RT10;
+    private javax.swing.JLabel RT11;
+    private javax.swing.JLabel RT12;
+    private javax.swing.JLabel RT13;
+    private javax.swing.JLabel RT14;
     private javax.swing.JLabel RT2;
     private javax.swing.JLabel RT3;
     private javax.swing.JLabel RT4;
     private javax.swing.JLabel RT5;
     private javax.swing.JLabel RT6;
+    private javax.swing.JLabel RT7;
+    private javax.swing.JLabel RT8;
+    private javax.swing.JLabel RT9;
     private javax.swing.JLabel RTLbl1;
+    private javax.swing.JLabel RTLbl10;
+    private javax.swing.JLabel RTLbl11;
+    private javax.swing.JLabel RTLbl12;
+    private javax.swing.JLabel RTLbl13;
+    private javax.swing.JLabel RTLbl14;
     private javax.swing.JLabel RTLbl2;
     private javax.swing.JLabel RTLbl3;
     private javax.swing.JLabel RTLbl4;
     private javax.swing.JLabel RTLbl5;
     private javax.swing.JLabel RTLbl6;
+    private javax.swing.JLabel RTLbl7;
+    private javax.swing.JLabel RTLbl8;
+    private javax.swing.JLabel RTLbl9;
     private javax.swing.JLabel Recyclable1;
+    private javax.swing.JLabel Recyclable10;
+    private javax.swing.JLabel Recyclable11;
+    private javax.swing.JLabel Recyclable12;
+    private javax.swing.JLabel Recyclable13;
+    private javax.swing.JLabel Recyclable14;
     private javax.swing.JLabel Recyclable2;
     private javax.swing.JLabel Recyclable3;
     private javax.swing.JLabel Recyclable4;
     private javax.swing.JLabel Recyclable5;
     private javax.swing.JLabel Recyclable6;
+    private javax.swing.JLabel Recyclable7;
+    private javax.swing.JLabel Recyclable8;
+    private javax.swing.JLabel Recyclable9;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JTextField SearchField;
     private javax.swing.JLabel Title;
     private javax.swing.JLabel Type1;
+    private javax.swing.JLabel Type10;
+    private javax.swing.JLabel Type11;
+    private javax.swing.JLabel Type12;
+    private javax.swing.JLabel Type13;
+    private javax.swing.JLabel Type14;
     private javax.swing.JLabel Type2;
     private javax.swing.JLabel Type3;
     private javax.swing.JLabel Type4;
     private javax.swing.JLabel Type5;
     private javax.swing.JLabel Type6;
+    private javax.swing.JLabel Type7;
+    private javax.swing.JLabel Type8;
+    private javax.swing.JLabel Type9;
+    private javax.swing.JLabel img1;
+    private javax.swing.JLabel img10;
+    private javax.swing.JLabel img11;
+    private javax.swing.JLabel img12;
+    private javax.swing.JLabel img13;
+    private javax.swing.JLabel img14;
+    private javax.swing.JLabel img2;
+    private javax.swing.JLabel img3;
+    private javax.swing.JLabel img4;
+    private javax.swing.JLabel img5;
+    private javax.swing.JLabel img6;
+    private javax.swing.JLabel img7;
+    private javax.swing.JLabel img8;
+    private javax.swing.JLabel img9;
     private java.awt.ScrollPane scrollPane1;
     // End of variables declaration//GEN-END:variables
 }
