@@ -331,6 +331,7 @@ public class RecyclingListGUI extends javax.swing.JFrame{
 
         ObjectsPnl.setBackground(new java.awt.Color(255, 51, 51));
         ObjectsPnl.setOpaque(false);
+        ObjectsPnl.setPreferredSize(new java.awt.Dimension(800, 1658));
 
         Obj1.setBackground(new java.awt.Color(102, 204, 255));
 
@@ -2563,7 +2564,7 @@ public class RecyclingListGUI extends javax.swing.JFrame{
                 DTs.get(i).setText(String.valueOf(obj.getDecompositionTime()));
                 RTs.get(i).setText(obj.getRecyclingType());
                 EIs.get(i).setText(String.valueOf(obj.getEnviromentalImpact()));
-                //Descriptions.get(i).setText(obj.getDescription());
+                Descriptions.get(i).setText(obj.getDescription());
                 Names.get(i).setText(obj.getName());
                 Types.get(i).setText(obj.getType());
                 
@@ -2584,10 +2585,9 @@ public class RecyclingListGUI extends javax.swing.JFrame{
     }//GEN-LAST:event_SearchBtnActionPerformed
 
     private void HomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeBtnActionPerformed
-       //dispose();
-       //HomePage HPUI = new HomePage();
-       //HPUI.setVisible(true);
-       JOptionPane.showMessageDialog(null,"Home button not working");
+       dispose();
+       HomePage HPUI = new HomePage();
+       HPUI.setVisible(true);
        
     }//GEN-LAST:event_HomeBtnActionPerformed
 
@@ -2781,7 +2781,7 @@ public class RecyclingListGUI extends javax.swing.JFrame{
         ObjectOutputStream objectStream;
         
         try{
-            file = new File("output.dat");
+            file = new File("src/recyclingservice/data/materialData/output.dat");
             fileStream = new FileOutputStream(file);
             objectStream = new ObjectOutputStream(fileStream);
             
@@ -2800,7 +2800,7 @@ public class RecyclingListGUI extends javax.swing.JFrame{
         FileInputStream fileStream;
         ObjectInputStream outputStream;
         try{
-            file = new File("output.dat");
+            file = new File("src/recyclingservice/data/materialData/output.dat");
             fileStream = new FileInputStream(file);
             outputStream = new ObjectInputStream(fileStream);
             recyclingObjects = (ArrayList<RecyclingObj>)outputStream.readObject();
