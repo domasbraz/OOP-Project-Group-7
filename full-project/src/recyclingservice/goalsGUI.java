@@ -47,6 +47,8 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
         materialTF.setVisible(true);
         targetamount.setVisible(true);
         targetamountTF.setVisible(true);
+        
+        CreateRB.setSelected(true);
 
     }
 
@@ -382,6 +384,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
         //by making a new JTextarea and then putting the goalDetails into it and then adding that onto a Jpanel
         for (Goal g : incompleteGoals) {
             JTextArea goalTextArea = new JTextArea(g.getGoalDetails()/* + "\n\n"*/);
+            goalTextArea.setEditable(false);
             goalDisplay.add(goalTextArea);
 
             count++;
@@ -395,8 +398,11 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
         if (incompleteGoals.isEmpty()) {
             JTextArea goalTextArea = new JTextArea(errorMsg);
+            goalTextArea.setEditable(false);
             goalDisplay.add(goalTextArea);
         }
+        goalDisplay.revalidate();
+        goalDisplay.repaint();
 
 
     }//GEN-LAST:event_ViewRBActionPerformed
@@ -409,6 +415,26 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
     private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
         // TODO add your handling code here:
+        if (deadlineTF.getText().isEmpty() || materialTF.getText().isEmpty()
+                || targetamountTF.getText().isEmpty() || addAmountTF.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter values for all fields!");
+            return;
+        }
+        String newMaterial = materialTF.getText();
+
+        boolean materialExists = false;
+
+        for (Goal existingGoal : incompleteGoals) {
+            if (existingGoal.getMaterial().equalsIgnoreCase(newMaterial)) {
+                materialExists = true;
+                break;
+            }
+        }
+
+        if (materialExists) {
+            JOptionPane.showMessageDialog(null, "You already have a goal with this material!");
+            return;
+        }
 
         Goal g = new Goal();
         g.setDeadline(deadlineTF.getText());
@@ -418,15 +444,16 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
         g.computeCurrentAmount();
         g.computeGoalAchieved();
         goals.add(g);
-
-        if (g.goalAchieved == true) {
-            JOptionPane.showMessageDialog(null, "Well done this goal is already completed!");
-        }
-
+        
+        
         if (g.isGoalAchieved()) {
             completedGoals.add(g);
+            JOptionPane.showMessageDialog(null, "Well done! This goal is already completed!");
+            goals.remove(g);
         } else {
             incompleteGoals.add(g);
+            goals.add(g);
+            JOptionPane.showMessageDialog(null, "Goal added successfully!");
         }
 
     }//GEN-LAST:event_AddBtnActionPerformed
@@ -566,14 +593,57 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
             JOptionPane.showMessageDialog(null, "there are no goals to delete");
         } else {
             String selectedGoal = JOptionPane.showInputDialog(null, "Choose the goal you would like to delete by selecting the material");
+            Goal goalToDelete = null;
             for (Goal g : goals) {
                 if (g.getMaterial().equalsIgnoreCase(selectedGoal)) {
-                    goals.remove(g);
-                    JOptionPane.showMessageDialog(null, g.getGoalDetails() + " has been deleted");
+                    goalToDelete = g;
+                    break;
                 }
             }
+
+            if (goalToDelete != null) {
+                completedGoals.remove(goalToDelete);
+                incompleteGoals.remove(goalToDelete);
+                goals.remove(goalToDelete);
+
+                JOptionPane.showMessageDialog(null, goalToDelete.getGoalDetails() + " has been deleted");
+
+                if (ViewRB.isSelected()) {
+                    refreshViewTab();
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Goal not found!");
+            }
         }
+
     }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void refreshViewTab() {
+        goalDisplay.removeAll();
+
+        int count = 0;
+
+        for (Goal g : incompleteGoals) {
+            JTextArea goalTextArea = new JTextArea(g.getGoalDetails());
+            goalDisplay.add(goalTextArea);
+
+            count++;
+
+            if (count >= 4) {
+                break;
+            }
+        }
+
+        String errorMsg = "Sorry, there are no goals to view";
+
+        if (incompleteGoals.isEmpty()) {
+            JTextArea goalTextArea = new JTextArea(errorMsg);
+            goalDisplay.add(goalTextArea);
+        }
+
+        goalDisplay.revalidate();
+        goalDisplay.repaint();
+    }
 
     private void StatisticsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsBtnActionPerformed
         // TODO add your handling code here:
