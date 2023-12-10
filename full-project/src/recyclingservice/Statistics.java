@@ -12,22 +12,35 @@ import java.util.ArrayList;
  */
 public class Statistics{
     private ArrayList <Goal> completedGoalsS;
-    private ArrayList <Goal> goalsS;
+    private ArrayList <Goal> incompleteGoalsS;
+    protected double totalRecycledAmount;
  
-   public Statistics(ArrayList<Goal> completedGoals, ArrayList <Goal> goals){
+   public Statistics(ArrayList<Goal> completedGoals, ArrayList <Goal> incompleteGoals){
        this.completedGoalsS = completedGoals;
-       this.goalsS = goals;
+       this.incompleteGoalsS = incompleteGoals;
         
     }
    
-   public double computeTotalRecycledAmount(){
-       double totalRecycledAmount = 0.0;
-       for( Goal goal: goalsS){
-           totalRecycledAmount = goal.getCurrentAmount() + totalRecycledAmount;
-       }
-       return totalRecycledAmount;
-   }
-   
+ public double computeTotalRecycledAmount(ArrayList<Goal> incompleteGoals, ArrayList<Goal> completedGoals) {
+    double totalRecycledAmount = 0.0;
+
+    for (Goal goal : incompleteGoals) {
+        totalRecycledAmount += goal.getCurrentAmount();
+    }
+
+    for (Goal goal : completedGoals) {
+        totalRecycledAmount += goal.getCurrentAmount();
+    }
+
+    return totalRecycledAmount;
+
+}
+
+    
+    public double getTotalRecycledAmount() {
+        return totalRecycledAmount;
+    }
+
     public ArrayList<Goal> getCompletedGoals(){
        return completedGoalsS;
    }
@@ -37,11 +50,11 @@ public class Statistics{
     }
 
     public ArrayList<Goal> getGoals(){
-        return goalsS;
+        return incompleteGoalsS;
     }
     
-    public void setGoals(ArrayList<Goal> goals){
-        this.goalsS = goals;
+    public void setGoals(ArrayList<Goal> incompleteGoals){
+        this.incompleteGoalsS = incompleteGoals;
     }
 }
     

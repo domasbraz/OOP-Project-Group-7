@@ -26,7 +26,7 @@ import javax.swing.JTextArea;
  */
 public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
-    private ArrayList<Goal> goals;
+    
     private ArrayList<Goal> completedGoals;
     private ArrayList<Goal> incompleteGoals;
     private ArrayList<Statistics> selectedGoal;
@@ -34,7 +34,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
     public goalsGUI() {
         initComponents();
         getContentPane().setBackground(new Color(30, 30, 30));
-        goals = new ArrayList<>();
+      
         completedGoals = new ArrayList<>();
         incompleteGoals = new ArrayList<>();
         selectedGoal = new ArrayList<>();
@@ -443,16 +443,16 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
         g.setAddAmount(Double.parseDouble(addAmountTF.getText()));
         g.computeCurrentAmount();
         g.computeGoalAchieved();
-        goals.add(g);
+       
         
         
         if (g.isGoalAchieved()) {
             completedGoals.add(g);
             JOptionPane.showMessageDialog(null, "Well done! This goal is already completed!");
-            goals.remove(g);
+            
         } else {
             incompleteGoals.add(g);
-            goals.add(g);
+            
             JOptionPane.showMessageDialog(null, "Goal added successfully!");
         }
 
@@ -469,7 +469,8 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
             fStream = new FileOutputStream(outFile, true);
             oStream = new ObjectOutputStream(fStream);
 
-            oStream.writeObject(goals);
+            oStream.writeObject(incompleteGoals);
+            oStream.writeObject(completedGoals);
             JOptionPane.showMessageDialog(null, "goal added succesfully");
             oStream.close();
         } catch (IOException e) {
@@ -479,9 +480,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
     private void DisplayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayBtnActionPerformed
         // TODO add your handling code here:
-        if (goals.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "there are no goals to display");
-        } else {
+        
             int ans = (Integer.parseInt(JOptionPane.showInputDialog("Would you like to see completed(type 1) or current goals(type 2)? : ")));
             if (ans == 1) {
                 if (completedGoals.isEmpty()) {
@@ -503,7 +502,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
                 }
             }
 
-        }
+        
     }//GEN-LAST:event_DisplayBtnActionPerformed
 
     private void LoadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadBtnActionPerformed
@@ -544,7 +543,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
     private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
         // TODO add your handling code here:
 
-        if (goals.isEmpty()) {
+        if (incompleteGoals.isEmpty()) {
             JOptionPane.showMessageDialog(null, "there are no goals to update");
         } else {
             while (true) {
@@ -555,7 +554,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
                 }
                 boolean goalFound = false;
 
-                for (Goal g : goals) {
+                for (Goal g : incompleteGoals) {
                     if (g.getMaterial().equalsIgnoreCase(selectedGoal)) {
                         double newAddAmount = Double.parseDouble(JOptionPane.showInputDialog(null, "Add to current amount: "));
 
@@ -565,22 +564,25 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
                             g.computeGoalAchieved();
 
                             JOptionPane.showMessageDialog(this, "Goal updated successfully!");
+
+                            if (g.isGoalAchieved()) {
+                                JOptionPane.showMessageDialog(null, "Well done, you completed this goal!");
+                                completedGoals.add(g);
+                                incompleteGoals.remove(g);
+                            }
+
+                            
+                           
+
                         } catch (NumberFormatException e) {
                             JOptionPane.showMessageDialog(this, "Invalid input for addAmount. Please enter a valid number.");
                         }
-                        if (g.isGoalAchieved()) {
-                            JOptionPane.showMessageDialog(null, "Well done you completed this goal!");
-                            completedGoals.add(g);
-                            incompleteGoals.remove(g);
-                        } else {
-                            incompleteGoals.add(g);
-                        }
+
+                        goalFound = true;
+                        break;
+                        
                     }
-
-                    goalFound = true;
-
                 }
-                break;
 
             }
         }
@@ -589,12 +591,19 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
     private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
         // TODO add your handling code here:
-        if (goals.isEmpty()) {
+        if (incompleteGoals.isEmpty()&& completedGoals.isEmpty()) {
             JOptionPane.showMessageDialog(null, "there are no goals to delete");
         } else {
             String selectedGoal = JOptionPane.showInputDialog(null, "Choose the goal you would like to delete by selecting the material");
             Goal goalToDelete = null;
-            for (Goal g : goals) {
+            for (Goal g : incompleteGoals) {
+                if (g.getMaterial().equalsIgnoreCase(selectedGoal)) {
+                    goalToDelete = g;
+                    break;
+                }
+            }
+            
+             for (Goal g : completedGoals) {
                 if (g.getMaterial().equalsIgnoreCase(selectedGoal)) {
                     goalToDelete = g;
                     break;
@@ -604,7 +613,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
             if (goalToDelete != null) {
                 completedGoals.remove(goalToDelete);
                 incompleteGoals.remove(goalToDelete);
-                goals.remove(goalToDelete);
+                
 
                 JOptionPane.showMessageDialog(null, goalToDelete.getGoalDetails() + " has been deleted");
 
@@ -648,13 +657,13 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
     private void StatisticsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsBtnActionPerformed
         // TODO add your handling code here:
 
-        Statistics s = new Statistics(completedGoals, goals);
-        if (goals.isEmpty()) {
+        Statistics s = new Statistics(completedGoals, incompleteGoals);
+        if (incompleteGoals.isEmpty()&& completedGoals.isEmpty()) {
             JOptionPane.showMessageDialog(null, "there are no statistics to display");
         } else {
 
-            double totalRecycledAmount = s.computeTotalRecycledAmount();
-            String statisticsMsg = "Statistics: \n" + "Total Recycled Amount: " + totalRecycledAmount + " KG\n" + "Number of completed Goals:" + completedGoals.size() + "";
+            
+            String statisticsMsg = "Statistics: \n" + "Total Recycled Amount: " + s.totalRecycledAmount + " KG\n" + "Number of completed Goals:" + completedGoals.size() + "";
 
             JOptionPane.showMessageDialog(null, statisticsMsg);
         }
@@ -662,7 +671,7 @@ public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
     private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
         // TODO add your handling code here:
-        if (goals.isEmpty()) {
+        if (incompleteGoals.isEmpty()&& completedGoals.isEmpty()) {
             JOptionPane.showMessageDialog(null, "there are no goals to search");
         } else {
             int ans = (Integer.parseInt(JOptionPane.showInputDialog("Would you like to search completed(type 1) or current goals(type 2)? : ")));
