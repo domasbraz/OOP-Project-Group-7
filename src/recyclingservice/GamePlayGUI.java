@@ -311,8 +311,7 @@ public class GamePlayGUI extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         lblTitle = new javax.swing.JLabel();
         lblTimeVal = new javax.swing.JLabel();
@@ -364,10 +363,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnQuit.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnQuit.setForeground(new java.awt.Color(255, 0, 51));
         btnQuit.setText("Quit");
-        btnQuit.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnQuit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnQuitActionPerformed(evt);
             }
         });
@@ -380,10 +377,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnHDPE.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnHDPE.setForeground(new java.awt.Color(111, 162, 202));
         btnHDPE.setText("High-Density Polyethylene");
-        btnHDPE.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnHDPE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnHDPEActionPerformed(evt);
             }
         });
@@ -392,10 +387,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnLDPE.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnLDPE.setForeground(new java.awt.Color(111, 162, 202));
         btnLDPE.setText("Low-Density Polyethylene");
-        btnLDPE.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnLDPE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLDPEActionPerformed(evt);
             }
         });
@@ -404,10 +397,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnPP.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPP.setForeground(new java.awt.Color(111, 162, 202));
         btnPP.setText("Polypropylene");
-        btnPP.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPPActionPerformed(evt);
             }
         });
@@ -416,10 +407,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnPC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPC.setForeground(new java.awt.Color(111, 162, 202));
         btnPC.setText("Polycarbonate");
-        btnPC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPCActionPerformed(evt);
             }
         });
@@ -428,10 +417,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnPS.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPS.setForeground(new java.awt.Color(111, 162, 202));
         btnPS.setText("Polystyrene");
-        btnPS.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPSActionPerformed(evt);
             }
         });
@@ -440,10 +427,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnPET.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPET.setForeground(new java.awt.Color(111, 162, 202));
         btnPET.setText("Polyethylene Terephthalate");
-        btnPET.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPET.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPETActionPerformed(evt);
             }
         });
@@ -452,10 +437,8 @@ public class GamePlayGUI extends javax.swing.JFrame
         btnPVC.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         btnPVC.setForeground(new java.awt.Color(111, 162, 202));
         btnPVC.setText("Polyvinyl Chloride");
-        btnPVC.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPVC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPVCActionPerformed(evt);
             }
         });

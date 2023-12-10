@@ -28,8 +28,7 @@ public class HomePage extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
         playGameBtn = new javax.swing.JButton();
@@ -41,55 +40,42 @@ public class HomePage extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(111, 162, 202));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Welcome to DADA Recycling");
 
         playGameBtn.setBackground(new java.awt.Color(30, 30, 30));
-        playGameBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         playGameBtn.setForeground(new java.awt.Color(111, 162, 202));
         playGameBtn.setText("Play Game");
-        playGameBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        playGameBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playGameBtnActionPerformed(evt);
             }
         });
 
         goalsBtn.setBackground(new java.awt.Color(30, 30, 30));
-        goalsBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         goalsBtn.setForeground(new java.awt.Color(111, 162, 202));
         goalsBtn.setText("Create Goals");
-        goalsBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        goalsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goalsBtnActionPerformed(evt);
             }
         });
 
         recyclingInfoBtn.setBackground(new java.awt.Color(30, 30, 30));
-        recyclingInfoBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         recyclingInfoBtn.setForeground(new java.awt.Color(111, 162, 202));
         recyclingInfoBtn.setText("Recycling Info");
-        recyclingInfoBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        recyclingInfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recyclingInfoBtnActionPerformed(evt);
             }
         });
 
         accountCreationBtn.setBackground(new java.awt.Color(30, 30, 30));
-        accountCreationBtn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         accountCreationBtn.setForeground(new java.awt.Color(111, 162, 202));
         accountCreationBtn.setText("Account Creation");
-        accountCreationBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        accountCreationBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 accountCreationBtnActionPerformed(evt);
             }
         });
@@ -98,24 +84,28 @@ public class HomePage extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(165, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(accountCreationBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(playGameBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(goalsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(recyclingInfoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE))
-                .addGap(170, 170, 170))
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(191, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(245, 245, 245))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(playGameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(accountCreationBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(120, 120, 120)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(goalsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(recyclingInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(209, 209, 209))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65)
+                .addGap(37, 37, 37)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(goalsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(playGameBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,7 +121,7 @@ public class HomePage extends javax.swing.JFrame {
 
     private void playGameBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playGameBtnActionPerformed
         dispose();
-        GameRulesGUI myGUI = new GameRulesGUI();
+        GamePlayGUI myGUI = new GamePlayGUI();
         myGUI.setVisible(true);
     }//GEN-LAST:event_playGameBtnActionPerformed
 
@@ -149,8 +139,8 @@ public class HomePage extends javax.swing.JFrame {
 
     private void accountCreationBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accountCreationBtnActionPerformed
         dispose();
-        UserQuestionUI UI = new UserQuestionUI();
-        UI.setVisible(true);
+        UserQuestionUI UserQuestionUI = new UserQuestionUI();
+        UserQuestionUI.setVisible(true);
     }//GEN-LAST:event_accountCreationBtnActionPerformed
 
     /**

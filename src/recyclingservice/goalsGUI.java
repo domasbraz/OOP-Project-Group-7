@@ -5,20 +5,49 @@
 package recyclingservice;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import javax.swing.BoxLayout;
 import recyclingservice.HomePage;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 /**
  *
  * @author TOSHIBA
  */
-public class goalsGUI extends javax.swing.JFrame {
+public class goalsGUI extends javax.swing.JFrame implements Serializable {
 
-    /**
-     * Creates new form goalsGUI
-     */
+    private ArrayList<Goal> goals;
+    private ArrayList<Goal> completedGoals;
+    private ArrayList<Goal> incompleteGoals;
+    private ArrayList<Statistics> selectedGoal;
+
     public goalsGUI() {
         initComponents();
-        getContentPane().setBackground(new Color(30,30,30));
+        getContentPane().setBackground(new Color(30, 30, 30));
+        goals = new ArrayList<>();
+        completedGoals = new ArrayList<>();
+        incompleteGoals = new ArrayList<>();
+        selectedGoal = new ArrayList<>();
+
+        addAmountTF.setVisible(true);
+        addamount.setVisible(true);
+        deadline.setVisible(true);
+        deadlineTF.setVisible(true);
+        material.setVisible(true);
+        materialTF.setVisible(true);
+        targetamount.setVisible(true);
+        targetamountTF.setVisible(true);
+
     }
 
     /**
@@ -34,23 +63,25 @@ public class goalsGUI extends javax.swing.JFrame {
         Title = new javax.swing.JLabel();
         deadlineTF = new javax.swing.JTextField();
         deadline = new javax.swing.JLabel();
-        tagetamount = new javax.swing.JLabel();
+        targetamount = new javax.swing.JLabel();
         targetamountTF = new javax.swing.JTextField();
-        currentamount = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        material = new javax.swing.JTextField();
-        DailyRB = new javax.swing.JRadioButton();
-        WeeklyRB = new javax.swing.JRadioButton();
-        MonthlyRB = new javax.swing.JRadioButton();
+        material = new javax.swing.JLabel();
+        materialTF = new javax.swing.JTextField();
+        CreateRB = new javax.swing.JRadioButton();
+        ViewRB = new javax.swing.JRadioButton();
         homeButton = new javax.swing.JButton();
         Motto = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jProgressBar3 = new javax.swing.JProgressBar();
-        goal1 = new javax.swing.JLabel();
-        goal2 = new javax.swing.JLabel();
-        goal3 = new javax.swing.JLabel();
-        currentamountFT = new javax.swing.JFormattedTextField();
+        AddBtn = new javax.swing.JButton();
+        DisplayBtn = new javax.swing.JButton();
+        SaveBtn = new javax.swing.JButton();
+        LoadBtn = new javax.swing.JButton();
+        SearchBtn = new javax.swing.JButton();
+        DeleteBtn = new javax.swing.JButton();
+        goalDisplay = new javax.swing.JPanel();
+        addAmountTF = new javax.swing.JTextField();
+        addamount = new javax.swing.JLabel();
+        UpdateBtn = new javax.swing.JButton();
+        StatisticsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 51));
@@ -62,13 +93,19 @@ public class goalsGUI extends javax.swing.JFrame {
         Title.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Title.setText("RECYCLING GOALS");
 
+        deadlineTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deadlineTFActionPerformed(evt);
+            }
+        });
+
         deadline.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         deadline.setForeground(new Color (111, 162, 202));
         deadline.setText("DEADLINE:");
 
-        tagetamount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tagetamount.setForeground(new Color (111, 162, 202));
-        tagetamount.setText("TARGET AMOUNT:");
+        targetamount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        targetamount.setForeground(new Color (111, 162, 202));
+        targetamount.setText("TARGET AMOUNT(KG):");
 
         targetamountTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,44 +113,31 @@ public class goalsGUI extends javax.swing.JFrame {
             }
         });
 
-        currentamount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        currentamount.setForeground(new Color (111, 162, 202));
-        currentamount.setText("CURRENT AMOUNT:");
+        material.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        material.setForeground(new Color (111, 162, 202));
+        material.setText("MATERIAL:");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setForeground(new Color (111, 162, 202));
-        jLabel1.setText("MATERIAL:");
-
-        material.addActionListener(new java.awt.event.ActionListener() {
+        materialTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                materialActionPerformed(evt);
+                materialTFActionPerformed(evt);
             }
         });
 
-        DailyBG.add(DailyRB);
-        DailyRB.setForeground(new Color (111, 162, 202));
-        DailyRB.setText("Daily");
-        DailyRB.addActionListener(new java.awt.event.ActionListener() {
+        DailyBG.add(CreateRB);
+        CreateRB.setForeground(new Color (111, 162, 202));
+        CreateRB.setText("Create");
+        CreateRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DailyRBActionPerformed(evt);
+                CreateRBActionPerformed(evt);
             }
         });
 
-        DailyBG.add(WeeklyRB);
-        WeeklyRB.setForeground(new Color (111, 162, 202));
-        WeeklyRB.setText("Weekly");
-        WeeklyRB.addActionListener(new java.awt.event.ActionListener() {
+        DailyBG.add(ViewRB);
+        ViewRB.setForeground(new Color (111, 162, 202));
+        ViewRB.setText("View");
+        ViewRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WeeklyRBActionPerformed(evt);
-            }
-        });
-
-        DailyBG.add(MonthlyRB);
-        MonthlyRB.setForeground(new Color (111, 162, 202));
-        MonthlyRB.setText("Monthly");
-        MonthlyRB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MonthlyRBActionPerformed(evt);
+                ViewRBActionPerformed(evt);
             }
         });
 
@@ -129,21 +153,72 @@ public class goalsGUI extends javax.swing.JFrame {
         Motto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Motto.setText("upcycle, reduce and recycle");
 
-        goal1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        goal1.setForeground(new Color (111, 162, 202));
-        goal1.setText("GOAL 1:");
-
-        goal2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        goal2.setForeground(new Color (111, 162, 202));
-        goal2.setText("GOAL 2:");
-
-        goal3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        goal3.setForeground(new Color (111, 162, 202));
-        goal3.setText("GOAL 3:");
-
-        currentamountFT.addActionListener(new java.awt.event.ActionListener() {
+        AddBtn.setText("Add");
+        AddBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                currentamountFTActionPerformed(evt);
+                AddBtnActionPerformed(evt);
+            }
+        });
+
+        DisplayBtn.setText("Display");
+        DisplayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DisplayBtnActionPerformed(evt);
+            }
+        });
+
+        SaveBtn.setText("Save");
+        SaveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveBtnActionPerformed(evt);
+            }
+        });
+
+        LoadBtn.setText("Load");
+        LoadBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoadBtnActionPerformed(evt);
+            }
+        });
+
+        SearchBtn.setText("Search");
+        SearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchBtnActionPerformed(evt);
+            }
+        });
+
+        DeleteBtn.setText("Delete");
+        DeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteBtnActionPerformed(evt);
+            }
+        });
+
+        goalDisplay.setBackground(new Color (30,30,30));
+        goalDisplay.setForeground(new Color (30,30,30));
+
+        addAmountTF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addAmountTFActionPerformed(evt);
+            }
+        });
+
+        addamount.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addamount.setForeground(new java.awt.Color(102, 153, 255));
+        addamount.setText("ADD AMOUNT(KG):");
+
+        UpdateBtn.setText("Update");
+        UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateBtnActionPerformed(evt);
+            }
+        });
+
+        StatisticsBtn.setText("Statistics");
+        StatisticsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatisticsBtnActionPerformed(evt);
             }
         });
 
@@ -152,103 +227,114 @@ public class goalsGUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(206, 206, 206)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(material, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(deadline)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(deadlineTF)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(goal3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jProgressBar3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(currentamount)
-                                    .addComponent(tagetamount))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(targetamountTF)
-                                    .addComponent(currentamountFT, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(goal2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(goal1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DisplayBtn)
                         .addGap(18, 18, 18)
+                        .addComponent(SearchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(SaveBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AddBtn)
+                        .addGap(18, 18, 18)
+                        .addComponent(UpdateBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(StatisticsBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(Motto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DailyRB)
-                            .addComponent(WeeklyRB)
-                            .addComponent(MonthlyRB))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(LoadBtn)
+                            .addComponent(DeleteBtn))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addContainerGap()
+                .addComponent(Title, javax.swing.GroupLayout.PREFERRED_SIZE, 805, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 39, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(220, 220, 220)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addamount)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(addAmountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(deadline)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(deadlineTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(material)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(materialTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(targetamount)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(targetamountTF, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ViewRB)
+                    .addComponent(CreateRB))
+                .addGap(75, 75, 75))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(goalDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
                 .addComponent(homeButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(Motto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(23, 23, 23)
                 .addComponent(homeButton)
+                .addGap(45, 45, 45)
+                .addComponent(Title)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addComponent(Title)
-                        .addGap(37, 37, 37)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(deadlineTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(DailyRB)
                             .addComponent(deadline))
                         .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(WeeklyRB)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tagetamount)
+                            .addComponent(materialTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(material))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(targetamountTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(MonthlyRB))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(targetamount))
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(currentamount)
-                            .addComponent(currentamountFT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(addAmountTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addamount, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(goal1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(goal2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(CreateRB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jProgressBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(goal3, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)))
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(Motto)
-                .addGap(35, 35, 35))
+                        .addComponent(ViewRB)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(goalDisplay, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(AddBtn)
+                    .addComponent(UpdateBtn)
+                    .addComponent(DeleteBtn))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(LoadBtn)
+                    .addComponent(SaveBtn))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Motto)
+                    .addComponent(DisplayBtn)
+                    .addComponent(SearchBtn)
+                    .addComponent(StatisticsBtn))
+                .addGap(33, 33, 33))
         );
 
         pack();
@@ -258,31 +344,281 @@ public class goalsGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_targetamountTFActionPerformed
 
-    private void materialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialActionPerformed
+    private void materialTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_materialActionPerformed
+    }//GEN-LAST:event_materialTFActionPerformed
 
-    private void DailyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DailyRBActionPerformed
+    private void CreateRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreateRBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DailyRBActionPerformed
+        addAmountTF.setVisible(true);
+        addamount.setVisible(true);
+        deadline.setVisible(true);
+        deadlineTF.setVisible(true);
+        material.setVisible(true);
+        materialTF.setVisible(true);
+        targetamount.setVisible(true);
+        targetamountTF.setVisible(true);
+        goalDisplay.setVisible(false);
 
-    private void MonthlyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyRBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MonthlyRBActionPerformed
+    }//GEN-LAST:event_CreateRBActionPerformed
 
-    private void WeeklyRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WeeklyRBActionPerformed
+    private void ViewRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewRBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_WeeklyRBActionPerformed
 
-    private void currentamountFTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_currentamountFTActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_currentamountFTActionPerformed
+        deadline.setVisible(false);
+        deadlineTF.setVisible(false);
+        material.setVisible(false);
+        materialTF.setVisible(false);
+        targetamount.setVisible(false);
+        targetamountTF.setVisible(false);
+        addAmountTF.setVisible(false);
+        addamount.setVisible(false);
+        goalDisplay.setVisible(true);
+
+        goalDisplay.removeAll();
+
+        int count = 0;
+        //making it so it makes a it possible to view the incomplete goals on the gui
+        //by making a new JTextarea and then putting the goalDetails into it and then adding that onto a Jpanel
+        for (Goal g : incompleteGoals) {
+            JTextArea goalTextArea = new JTextArea(g.getGoalDetails()/* + "\n\n"*/);
+            goalDisplay.add(goalTextArea);
+
+            count++;
+
+            if (count >= 4) {
+                break;
+            }
+        }
+
+        String errorMsg = "Sorry there are no goals to view";
+
+        if (incompleteGoals.isEmpty()) {
+            JTextArea goalTextArea = new JTextArea(errorMsg);
+            goalDisplay.add(goalTextArea);
+        }
+
+
+    }//GEN-LAST:event_ViewRBActionPerformed
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-       dispose();
-       HomePage HPUI = new HomePage();
-       HPUI.setVisible(true);
+        dispose();
+        HomePage HPUI = new HomePage();
+        HPUI.setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
+
+    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
+        // TODO add your handling code here:
+
+        Goal g = new Goal();
+        g.setDeadline(deadlineTF.getText());
+        g.setMaterial(materialTF.getText());
+        g.setTargetAmount(Double.parseDouble(targetamountTF.getText()));
+        g.setAddAmount(Double.parseDouble(addAmountTF.getText()));
+        g.computeCurrentAmount();
+        g.computeGoalAchieved();
+        goals.add(g);
+
+        if (g.goalAchieved == true) {
+            JOptionPane.showMessageDialog(null, "Well done this goal is already completed!");
+        }
+
+        if (g.isGoalAchieved()) {
+            completedGoals.add(g);
+        } else {
+            incompleteGoals.add(g);
+        }
+
+    }//GEN-LAST:event_AddBtnActionPerformed
+
+    private void SaveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveBtnActionPerformed
+        // TODO add your handling code here:
+        File outFile;
+        FileOutputStream fStream;
+        ObjectOutputStream oStream;
+
+        try {
+            outFile = new File("src\\recyclingservice\\data\\goals\\goals.dat");
+            fStream = new FileOutputStream(outFile, true);
+            oStream = new ObjectOutputStream(fStream);
+
+            oStream.writeObject(goals);
+            JOptionPane.showMessageDialog(null, "goal added succesfully");
+            oStream.close();
+        } catch (IOException e) {
+            System.out.println("Error " + e);
+        }
+    }//GEN-LAST:event_SaveBtnActionPerformed
+
+    private void DisplayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayBtnActionPerformed
+        // TODO add your handling code here:
+        if (goals.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "there are no goals to display");
+        } else {
+            int ans = (Integer.parseInt(JOptionPane.showInputDialog("Would you like to see completed(type 1) or current goals(type 2)? : ")));
+            if (ans == 1) {
+                if (completedGoals.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "There are no completed goals to display");
+                } else {
+                }
+                for (Goal g : completedGoals) {
+                    JOptionPane.showMessageDialog(null, g.getGoalDetails());
+                }
+            }
+
+            if (ans == 2) {
+                if (incompleteGoals.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "There are no current goals to search");
+                } else {
+                    for (Goal g : incompleteGoals) {
+                        JOptionPane.showMessageDialog(null, g.getGoalDetails());
+                    }
+                }
+            }
+
+        }
+    }//GEN-LAST:event_DisplayBtnActionPerformed
+
+    private void LoadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoadBtnActionPerformed
+        // TODO add your handling code here:
+
+        File inFile;
+        FileInputStream fStream;
+        ObjectInputStream oStream;
+
+        try {
+            inFile = new File("src\\recyclingservice\\data\\goals\\goals.dat");
+            fStream = new FileInputStream(inFile);
+            oStream = new ObjectInputStream(fStream);
+
+            ArrayList<Goal> gList;
+            gList = (ArrayList<Goal>) oStream.readObject();
+            for (Goal g : gList) {
+                JOptionPane.showMessageDialog(null, "Goals loaded successfully!\n Deadline: " + g.getDeadline() + " Material: " + g.getMaterial() + " ,\n Target Amount: " + g.getTargetAmount() + "\n You added: " + g.getAddAmount() + " \ncurrently on: " + g.getCurrentAmount());
+            }
+
+            oStream.close();
+        } catch (IOException e) {
+            System.out.println("Error " + e);
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Error " + ex);
+        }
+
+    }//GEN-LAST:event_LoadBtnActionPerformed
+
+    private void deadlineTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deadlineTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deadlineTFActionPerformed
+
+    private void addAmountTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addAmountTFActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addAmountTFActionPerformed
+
+    private void UpdateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateBtnActionPerformed
+        // TODO add your handling code here:
+
+        if (goals.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "there are no goals to update");
+        } else {
+            while (true) {
+                String selectedGoal = JOptionPane.showInputDialog(null, "Choose the goal you would like to update by selecting the material");
+
+                if (selectedGoal == null) {
+                    break;
+                }
+                boolean goalFound = false;
+
+                for (Goal g : goals) {
+                    if (g.getMaterial().equalsIgnoreCase(selectedGoal)) {
+                        double newAddAmount = Double.parseDouble(JOptionPane.showInputDialog(null, "Add to current amount: "));
+
+                        try {
+                            g.setAddAmount(newAddAmount);
+                            g.computeCurrentAmount();
+                            g.computeGoalAchieved();
+
+                            JOptionPane.showMessageDialog(this, "Goal updated successfully!");
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(this, "Invalid input for addAmount. Please enter a valid number.");
+                        }
+                        if (g.isGoalAchieved()) {
+                            JOptionPane.showMessageDialog(null, "Well done you completed this goal!");
+                            completedGoals.add(g);
+                            incompleteGoals.remove(g);
+                        } else {
+                            incompleteGoals.add(g);
+                        }
+                    }
+
+                    goalFound = true;
+
+                }
+                break;
+
+            }
+        }
+
+    }//GEN-LAST:event_UpdateBtnActionPerformed
+
+    private void DeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteBtnActionPerformed
+        // TODO add your handling code here:
+        if (goals.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "there are no goals to delete");
+        } else {
+            String selectedGoal = JOptionPane.showInputDialog(null, "Choose the goal you would like to delete by selecting the material");
+            for (Goal g : goals) {
+                if (g.getMaterial().equalsIgnoreCase(selectedGoal)) {
+                    goals.remove(g);
+                    JOptionPane.showMessageDialog(null, g.getGoalDetails() + " has been deleted");
+                }
+            }
+        }
+    }//GEN-LAST:event_DeleteBtnActionPerformed
+
+    private void StatisticsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatisticsBtnActionPerformed
+        // TODO add your handling code here:
+
+        Statistics s = new Statistics(completedGoals, goals);
+        if (goals.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "there are no statistics to display");
+        } else {
+
+            double totalRecycledAmount = s.computeTotalRecycledAmount();
+            String statisticsMsg = "Statistics: \n" + "Total Recycled Amount: " + totalRecycledAmount + " KG\n" + "Number of completed Goals:" + completedGoals.size() + "";
+
+            JOptionPane.showMessageDialog(null, statisticsMsg);
+        }
+    }//GEN-LAST:event_StatisticsBtnActionPerformed
+
+    private void SearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBtnActionPerformed
+        // TODO add your handling code here:
+        if (goals.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "there are no goals to search");
+        } else {
+            int ans = (Integer.parseInt(JOptionPane.showInputDialog("Would you like to search completed(type 1) or current goals(type 2)? : ")));
+            if (ans == 1) {
+                if (completedGoals.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "There are no completed goals to search");
+                } else {
+                    for (Goal g : completedGoals) {
+                        JOptionPane.showMessageDialog(null, g.getGoalDetails());
+                    }
+                }
+            }
+
+            if (incompleteGoals.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "There are no current goals to search");
+            } else {
+                if (ans == 2) {
+                    for (Goal g : incompleteGoals) {
+                        JOptionPane.showMessageDialog(null, g.getGoalDetails());
+                    }
+                }
+
+            }
+
+        }
+    }//GEN-LAST:event_SearchBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -320,26 +656,28 @@ public class goalsGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddBtn;
+    private javax.swing.JRadioButton CreateRB;
     private javax.swing.ButtonGroup DailyBG;
-    private javax.swing.JRadioButton DailyRB;
-    private javax.swing.JRadioButton MonthlyRB;
+    private javax.swing.JButton DeleteBtn;
+    private javax.swing.JButton DisplayBtn;
+    private javax.swing.JButton LoadBtn;
     private javax.swing.JLabel Motto;
+    private javax.swing.JButton SaveBtn;
+    private javax.swing.JButton SearchBtn;
+    private javax.swing.JButton StatisticsBtn;
     private javax.swing.JLabel Title;
-    private javax.swing.JRadioButton WeeklyRB;
-    private javax.swing.JLabel currentamount;
-    private javax.swing.JFormattedTextField currentamountFT;
+    private javax.swing.JButton UpdateBtn;
+    private javax.swing.JRadioButton ViewRB;
+    private javax.swing.JTextField addAmountTF;
+    private javax.swing.JLabel addamount;
     private javax.swing.JLabel deadline;
     private javax.swing.JTextField deadlineTF;
-    private javax.swing.JLabel goal1;
-    private javax.swing.JLabel goal2;
-    private javax.swing.JLabel goal3;
+    private javax.swing.JPanel goalDisplay;
     private javax.swing.JButton homeButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JProgressBar jProgressBar1;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar3;
-    private javax.swing.JTextField material;
-    private javax.swing.JLabel tagetamount;
+    private javax.swing.JLabel material;
+    private javax.swing.JTextField materialTF;
+    private javax.swing.JLabel targetamount;
     private javax.swing.JTextField targetamountTF;
     // End of variables declaration//GEN-END:variables
 }
